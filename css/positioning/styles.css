@@ -13,3 +13,10 @@
   top: 87px;
   left: 21px;
 }
+
+#hat {
+  position: absolute;
+  z-index: 2;
+  top: 2px;
+  left: -15px;
+}
