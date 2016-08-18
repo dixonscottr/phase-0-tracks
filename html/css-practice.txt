@@ -1,0 +1,28 @@
+body {
+  background-color: white;
+}
+
+h1 {
+  color: orange;
+  font-family: Helvetica;
+}
+
+blockquote {
+  border: 1px solid black;
+  border-top: 15px solid grey;
+  font-family: Helvetica;
+  padding: 20px;
+  width: 18%;
+  display: inline-block;
+  margin: 1px;
+  height: 200px;
+  padding-top: 20px;
+  vertical-align: top;
+}
+
+cite {
+  font-weight: bold;
+  text-align: left;
+  display: block;
+  padding-top: 7px;
+}
