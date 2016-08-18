@@ -4,5 +4,12 @@
   margin-left: auto;
   z-index: -1;
   padding-top: 75px;
+  position: relative;
+}
 
+#glasses {
+  position: absolute;
+  z-index: 1;
+  top: 87px;
+  left: 21px;
 }
