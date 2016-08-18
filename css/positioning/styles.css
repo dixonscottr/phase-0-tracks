@@ -1,26 +1,22 @@
 #octopus {
-  margin: auto;
-  display: block;
+  width: 100px;
+  margin-right: auto;
+  margin-left: auto;
   z-index: -1;
   padding-top: 75px;
-
+  position: relative;
 }
 
 #glasses {
-  margin: auto;
-  display: block;
+  position: absolute;
   z-index: 1;
-  position: relative;
-  top: -190px;
-
-
+  top: 87px;
+  left: 21px;
 }
 
 #hat {
-  margin: auto;
-  display: block;
+  position: absolute;
   z-index: 2;
-  position: relative;
-  top: -420px;
-
+  top: 2px;
+  left: -15px;
 }
