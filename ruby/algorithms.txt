@@ -1,0 +1,27 @@
+Using an elevator:
+
+-- Locate elevator bank and move near the elevators until you can see them
+-- Locate the up-and-down buttons outside the elevator
+-- Move to the front of the up-and-down buttons until you are an arm's width away from them
+-- If the floor you are moving to is above the current floor you are on now
+  -raise arm and point towards the center of the up button
+  -move towards the button and press it until the button lights up
+-- If the floor you are moving to is below the current floor you are on now
+  -raise arm and point towards the center of the down button
+  -move towards the button and press it until the button lights up
+-- When elevator doors open, move towards the open elevator door until you are directly in front of them
+-- If other people are in the elevator:
+  -while avoiding touching the people, move completely inside the elevator
+-- Otherwise: move completely inside the elevator.
+-- Locate floor buttons
+-- If other people are in the elevator:
+  -while avoiding touching the people, move directly in front of the floor buttons
+-- Otherwise: move directly in front of the floor buttons
+-- Point your arm toward the center of the button which has the same number as your destination floor
+-- Move towards the button and press it until the button lights up
+-- When the "current floor display" shows the number of your destination floor and the doors open: 
+-- If other people are in the elevator:
+  -while avoiding touching the people, exit completely from the elevator
+-- Otherwise: exit completely from the elevator
+
+
