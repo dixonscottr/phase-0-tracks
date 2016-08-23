@@ -25,3 +25,48 @@ Using an elevator:
 -- Otherwise: exit completely from the elevator
 
 
+Making coffee:
+
+-- Locate espresso maker in leftmost kitchen cabinet and place it on top of the counter
+-- If espresso maker not in leftmost kitchen cabinet:
+  - check drying rack or top of stove
+-- Hold bottom top of espresso maker in right hand, unscrew base to the left with left hand until base is removed
+-- Place all three parts (bottom base, coffee filter, top) on counter
+-- Take bottom base in right hand and hold it upright
+-- Place base under tap
+-- Until the base is filled to the 3/4 line, fill the base with water from the tap
+-- Place the bottom base on the counter upright
+-- Pick up coffee filter and place the long end into the bottom base until it fits
+-- Open freezer door and locate coffee tin
+-- Pick up coffee tin from freezer with left hand and place it on the counter
+-- Close freezer door
+-- Return to espresso maker
+-- Open top of coffee tin
+-- Place lid of coffee tin next to coffee tin on the counter
+-- Use plastic spoon to pick up coffee grounds
+-- Slowly dump coffee grounds from spoon into coffee filter
+-- Repeat last two steps, one time
+-- Place spoon back into coffee tin
+-- Place lid back onto coffee tin, pressing on the rim until it securely fits on top
+-- Hold coffee tin with left hand, open freezer door with right hand
+-- Place coffee tin upright on empty part of freezer shelf
+-- Close freezer door
+-- Return to espresso maker
+-- Pick up top with right hand, holding it upright
+-- Hold bottom base with left hand, screw the top onto the bottom, rotating right until it cannot rotate anymore
+-- Pick up espresso maker, holding it upright
+-- Locate empty burner stove top and place espresso maker on an empty burner
+-- Identify the location of the burner with the espresso maker
+-- Using that location, locate the gas knob on front of stove that controls that burner
+-- Use hand to rotate knob 80 degrees to the right while pressing forward until flame on that burner is seen
+-- When you hear the sound of liquid bubbling, rotate gas knob all the way to the left to turn off the burner
+-- Locate coffee mug in rightmost cabinet and place it on top of counter
+-- Return to stove
+-- When you cannot hear the sound of liquid bubbling any longer, hold espresso maker by the plastic handle with your right hand
+-- Hold espresso maker and move towards coffee mug until spout of espresso maker is directly on top of mug
+-- Slowly tip the espresso maker up until coffee begins to pour from the spout
+-- Hold espresso maker until all coffee pours from the espresso maker into the mug
+-- Place espresso maker in sink
+-- Return to coffee mug
+-- Coffee is ready to drink
+
