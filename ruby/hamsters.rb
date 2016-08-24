@@ -19,8 +19,8 @@ else
   age = age.to_i
 end
 
-p name
-p volume
-p fur
-p adopt
-p age
+puts "Hampster Name: #{name}"
+puts "Volume Level: #{volume}"
+puts "Fur Color: #{fur}"
+puts "Adoptable: #{adopt}"
+puts "Approximate age: #{age}"
