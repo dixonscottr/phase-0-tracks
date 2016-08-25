@@ -59,3 +59,5 @@ for i in 1..employee_num
 
 end
 
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends!"
+
