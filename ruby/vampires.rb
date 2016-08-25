@@ -5,7 +5,8 @@ puts "How many employees would you like to process?"
 employee_num = gets.chomp.to_i
 
 #run loop for each employee
-for i in 1..employee_num
+counter = 0
+while counter < employee_num
 
   #ask for the name
   puts "What is the employee's name?"
@@ -58,6 +59,8 @@ for i in 1..employee_num
   puts " "
   puts "Results: " + vampire_status
   puts " "
+
+  counter += 1
 
 end
 
