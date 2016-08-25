@@ -25,10 +25,21 @@ for i in 1..employee_num
   puts "Would you like to enroll in our health insurance? y/n"
   health_insurance = gets.chomp
 
+  #check for allergy to 'sunshine'
+  puts "Any allergies? (Type 'done' when finished)"
+  allergy=gets.chomp
+  until (allergy == "sunshine") || (allergy == "done")
+    allergy=gets.chomp
+  end
+
   vampire_status = "Results inconclusive"
 
   if (age == (2016-year_born)) && (garlic_bread == "y" || health_insurance == "y")
     vampire_status = "Probably not a vampire"
+  end
+
+  if allergy == "sunshine"
+    vampire_status = "Probably a vampire"
   end
 
   if !(age == (2016-year_born)) && (garlic_bread == "n" || health_insurance == "n")
