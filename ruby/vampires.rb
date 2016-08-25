@@ -18,4 +18,23 @@ garlic_bread = gets.chomp
 puts "Would you like to enroll in our health insurance? y/n"
 health_insurance = gets.chomp
 
-p name, age, year_born, garlic_bread, health_insurance
+vampire_status = "Results inconclusive"
+
+if (age == (2016-year_born)) && (garlic_bread == "y" || health_insurance == "y")
+  vampire_status = "Probably not a vampire"
+end
+
+if !(age == (2016-year_born)) && (garlic_bread == "n" || health_insurance == "n")
+  vampire_status =  "Probably a vampire"
+end
+
+if !(age == (2016-year_born)) && garlic_bread == "n" && health_insurance == "n"
+  vampire_status =  "Almost certainly a vampire"
+end
+
+if name == "Drake Cula" || name == "Tu Fang"
+  vampire_status = "Definitely a vampire"
+end
+
+puts vampire_status
+
