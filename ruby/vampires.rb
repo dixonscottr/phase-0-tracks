@@ -1,33 +1,34 @@
-puts "Welcome to Werewolf Inc."
+puts "Welcome to the Werewolf Inc. Vampire Detector"
 
 #ask how many employees to process
-puts "How many employee would you like to process?"
+puts "How many employees would you like to process?"
 employee_num = gets.chomp.to_i
 
 #run loop for each employee
 for i in 1..employee_num
 
   #ask for the name
-  puts "What is your name?"
+  puts "What is the employee's name?"
   name = gets.chomp
 
   #ask for age and year of birth
-  puts "How old are you?"
+  puts "How old is the employee?"
   age = gets.chomp.to_i
-  puts "And what year were you born?"
+  puts "What year was the employee born?"
   year_born = gets.chomp.to_i
 
   #ask if they want garlic bread
-  puts "Would you like garlic bread in the company cafeteria? y/n"
+  puts "Would the employee like to have the garlic bread in the company cafeteria? y/n"
   garlic_bread = gets.chomp
 
   #ask if they'd like health insurance
-  puts "Would you like to enroll in our health insurance? y/n"
+  puts "Would the employee like to enroll in our health insurance? y/n"
   health_insurance = gets.chomp
 
   #check for allergy to 'sunshine'
-  puts "Any allergies? (Type 'done' when finished)"
+  puts "Does the employee have any allergies? (Type 'done' when finished)"
   allergy=gets.chomp
+
   until (allergy == "sunshine") || (allergy == "done")
     allergy=gets.chomp
   end
@@ -53,8 +54,9 @@ for i in 1..employee_num
   if name == "Drake Cula" || name == "Tu Fang"
     vampire_status = "Definitely a vampire"
   end
-
-  puts vampire_status
+  
+  puts " "
+  puts "Results: " + vampire_status
   puts " "
 
 end
