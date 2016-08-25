@@ -34,27 +34,26 @@ while counter < employee_num
     allergy=gets.chomp
   end
 
-  vampire_status = "Results inconclusive"
+    if name == "Drake Cula" || name == "Tu Fang"
+      vampire_status = "Definitely a vampire"
 
-  if (age == (2016-year_born)) && (garlic_bread == "y" || health_insurance == "y")
-    vampire_status = "Probably not a vampire"
-  end
+    elsif (age != (2016-year_born)) && garlic_bread == "n" && health_insurance == "n"
+      vampire_status =  "Almost certainly a vampire"
 
-  if allergy == "sunshine"
-    vampire_status = "Probably a vampire"
-  end
+    elsif allergy == "sunshine"
+      vampire_status = "Probably a vampire"
 
-  if !(age == (2016-year_born)) && (garlic_bread == "n" || health_insurance == "n")
-    vampire_status =  "Probably a vampire"
-  end
+    elsif (age != (2016-year_born)) && (garlic_bread == "n" || health_insurance == "n")
+      vampire_status =  "Probably a vampire"
 
-  if !(age == (2016-year_born)) && garlic_bread == "n" && health_insurance == "n"
-    vampire_status =  "Almost certainly a vampire"
-  end
+    elsif (age == (2016-year_born)) && (garlic_bread == "y" || health_insurance == "y")
+      vampire_status = "Probably not a vampire"
 
-  if name == "Drake Cula" || name == "Tu Fang"
-    vampire_status = "Definitely a vampire"
-  end
+    else
+
+      vampire_status = "Results inconclusive"
+
+    end
   
   puts " "
   puts "Results: " + vampire_status
