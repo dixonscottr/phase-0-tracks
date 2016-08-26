@@ -11,27 +11,19 @@
 
 def encrypt(string)
   counter = 0
-
   while counter < string.length
-
-    if string[counter] == " "
-      string[counter] == string[counter]
-
+    if string[counter] == 'z'
+      string[counter] = 'a'
+      
+    elsif string[counter] == " "
+      string[counter] = string[counter]
+        
     else
-
-      if string[counter] == 'z'
-        string[counter] = 'a'
-      else
-        string[counter] = string[counter].next
-      end
-
+      string[counter] = string[counter].next
     end
-
       counter = counter + 1
   end
-
-  return string
-
+    return string
 end
 
 #write dexrypt method thar reverses the letter of the string in the alphabet.
