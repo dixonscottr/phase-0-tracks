@@ -40,20 +40,69 @@ print "Budget in US$: "
 amt = gets.chomp.delete("$")
 customer_form[:budget] = amt.delete(",").to_i
 
-print "Does the customer have pets? (y/n): "
+print "Does the customer have pets? (true or false): "
 answer = gets.chomp.downcase
-if answer == "y" || answer == "yes"
-  customer_form[:pets] = true
+
+if answer == "true" || answer == "t"
+  customer_form[:has_pets] = true
 else
-  customer_form[:pets] = false
+  customer_form[:has_pets] = false
 end
 
 #print the completed hash to the screen
-
-puts customer_form
+puts " "
+puts customer_form.each {|x, y| puts x.to_s + ": " + y.to_s}
+puts " "
 
 #Ask the user if they would like to update any keys
+puts "Which key would you like to update? (Type 'none' to skip)"
+key_value = gets.chomp.to_sym
 
+if  customer_form.include?(key_value) == false && key_value != :none
+
+  puts "Sorry, we don't have the capabilities to accept #{key_value}, yet"
+
+elsif key_value != :none
+
+  case key_value
+
+  when :has_pets
+
+    puts "The current value is: #{customer_form[key_value]}"
+    puts "What would you like to change it to? (true or false)"
+    new_pets_value = gets.chomp.downcase
+
+    if new_pets_value = "true" || new_pets_value == "t"
+      customer_form[:has_pets] = true
+    else
+      customer_form[:has_pets] = false
+    end
+
+  when :budget
+
+    puts "The current value is: #{customer_form[key_value]}"
+    puts "What would you like to change it to? (in US$)"
+    new_amt = gets.chomp.delete("$")
+    customer_form[:budget] = new_amt.delete(",").to_i
+
+  when :num_rooms || :children_num || :age
+
+    puts "The current value is: #{customer_form[key_value]}"
+    puts "What would you like to change it to?"
+    customer_form[key_value] = gets.chomp.to_i
+
+  when :name || :hometown || :current_city || :color || :decor
+
+    puts "The current value is: #{customer_form[key_value]}"
+    puts "What would you like to change it to?"
+    customer_form[key_value] = gets.chomp
+  end
+
+  puts " "
+  puts "Here is the updated form: "
+  puts customer_form.each {|x, y| puts x.to_s + ": " + y.to_s}
+    
+end
 #If user chooses a key, ask them for the input and update with the new value
 
 #If the user chooses "none", do nothing
