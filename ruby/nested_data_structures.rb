@@ -55,3 +55,23 @@ fashion_show ={
 puts fashion_show[:runway_one]
 puts fashion_show[:runway_two]
 puts fashion_show[:runway_three]
+puts " "
+
+p fashion_show[:runway_one][:models][0]
+p fashion_show[:runway_one][:hosts][:backup_host]
+p fashion_show[:runway_two][:sponsors].first
+p fashion_show[:runway_two][:theme]
+p fashion_show[:runway_three][:models].last
+
+p fashion_show[:runway_one][:sponsors]
+fashion_show[:runway_one][:sponsors] << "Zima"
+p fashion_show[:runway_one][:sponsors]
+
+p fashion_show[:runway_two][:sponsors]
+p fashion_show[:runway_two][:sponsors].pop
+
+p fashion_show[:runway_two][:models]
+p fashion_show[:runway_two][:models].reverse
+p fashion_show[:runway_two][:models][2].reverse.capitalize
+
+p fashion_show[:runway_three][:models][0].upcase
