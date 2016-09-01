@@ -1,4 +1,10 @@
 #Swap first and last name
+def swap_name(full_name)
+  new_name = full_name.split(" ").reverse.join(" ")
+end
+
+p swap_name("John Smith")
+puts swap_name("John Smith") == "Smith John"
 
 #Change all letters to lowercase
 
