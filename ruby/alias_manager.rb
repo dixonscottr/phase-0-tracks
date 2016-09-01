@@ -34,10 +34,31 @@ def vowel_shift(full_name)
   vowel_shifted_name.join("")
 end
 
-p vowel_shift("John Smith")
-puts vowel_shift("John Smith") == "Juhn Smoth"
+# p vowel_shift("John Smith")
+# puts vowel_shift("John Smith") == "Juhn Smoth"
 
 #Go through the word and change all consonants (bcdfghjklmnpqrstvwxyz) to the next one
+def consonant_shift(full_name)
+  consonants = "bcdfghjklmnpqrstvwxyz"
+  consonant_shifted_name = []
+  full_name.chars do |letter|
+    if consonants.include?(letter)
+      c_idx = consonants.index(letter)
+      if c_idx < (consonants.length - 1)
+        consonant_shifted_name << consonants[c_idx + 1]
+      else
+        consonant_shifted_name << "b"
+      end
+    else
+      consonant_shifted_name << letter
+    end
+  end
+  consonant_shifted_name.join("")
+end
+
+p consonant_shift("John Smith")
+puts consonant_shift("John Smith") == "Jojp Snivj"
+
 
 #Capitalize the first letters of both names
 
