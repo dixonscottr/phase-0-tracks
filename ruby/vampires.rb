@@ -4,16 +4,6 @@ puts "Welcome to the Werewolf Inc. Vampire Detector"
 puts "How many employees would you like to process?"
 employee_num = gets.chomp.to_i
 
-#check if the age is real by comparing it to the current year - the age
-def real_age_checker(age, year_born)
-  current_year = Time.new.year
-  if current_year - year_born == age
-    true
-  else
-    false
-  end
-end
-
 #run loop for each employee
 counter = 0
 while counter < employee_num
@@ -27,7 +17,13 @@ while counter < employee_num
   age = gets.chomp.to_i
   puts "What year was the employee born?"
   year_born = gets.chomp.to_i
-  real_age = real_age_checker(age, year_born)
+
+  current_year = Time.new.year
+  if current_year - year_born == age
+    real_age = true
+  else
+    real_age = false
+  end
 
   #ask if they want garlic bread
   puts "Would the employee like to have the garlic bread in the company cafeteria? y/n"
