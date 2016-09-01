@@ -33,6 +33,12 @@ while counter < employee_num
   puts "Would the employee like to have the garlic bread in the company cafeteria? y/n"
   garlic_bread = gets.chomp
 
+  if garlic_bread.downcase == "y" || garlic_bread.downcase == "yes"
+    wants_garlic_bread = true
+  else
+    wants_garlic_bread = false
+  end
+
   #ask if they'd like health insurance
   puts "Would the employee like to enroll in our health insurance? y/n"
   health_insurance = gets.chomp
@@ -48,16 +54,16 @@ while counter < employee_num
     if name == "Drake Cula" || name == "Tu Fang"
       vampire_status = "Definitely a vampire"
 
-    elsif !real_age && garlic_bread == "n" && health_insurance == "n"
+    elsif !real_age && !wants_garlic_bread && health_insurance == "n"
       vampire_status =  "Almost certainly a vampire"
 
     elsif allergy == "sunshine"
       vampire_status = "Probably a vampire"
 
-    elsif !real_age && (garlic_bread == "n" || health_insurance == "n")
+    elsif !real_age && (!wants_garlic_bread || health_insurance == "n")
       vampire_status =  "Probably a vampire"
 
-    elsif real_age && (garlic_bread == "y" || health_insurance == "y")
+    elsif real_age && (wants_garlic_bread || health_insurance == "y")
       vampire_status = "Probably not a vampire"
 
     else
