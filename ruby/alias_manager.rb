@@ -71,6 +71,13 @@ def fake_namer(real_name)
   fake_name = capitalize_name(fake_name)
 end
 
-puts fake_namer("Felicia Torres")
-
+puts "Welcome to the Pseudonym Maker!"
+puts "Please enter your real name to get a spy name: (type 'quit' to exit)"
+answer = gets.chomp
+  while answer.downcase != "quit"
+    spy_name = fake_namer(answer)
+    puts "Your spy name is: #{spy_name}"
+    puts "What is the next name to spy-ify?"
+    answer = gets.chomp
+  end
 
