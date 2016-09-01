@@ -37,7 +37,15 @@ while counter < employee_num
 
   #ask if they'd like health insurance
   puts "Would the employee like to enroll in our health insurance? y/n"
-  health_insurance = gets.chomp
+  health_insurance = gets.chomp.downcase
+
+  if health_insurance == "y" || health_insurance == "yes"
+    wants_health_insurance = true
+  else
+    wants_health_insurance = false
+  end
+
+  p wants_health_insurance
 
   #check for allergy to 'sunshine'
   puts "Does the employee have any allergies? (Type 'done' when finished)"
@@ -50,16 +58,16 @@ while counter < employee_num
     if name == "Drake Cula" || name == "Tu Fang"
       vampire_status = "Definitely a vampire"
 
-    elsif !real_age && !wants_garlic_bread && health_insurance == "n"
+    elsif !real_age && !wants_garlic_bread && !wants_health_insurance
       vampire_status =  "Almost certainly a vampire"
 
     elsif allergy == "sunshine"
       vampire_status = "Probably a vampire"
 
-    elsif !real_age && (!wants_garlic_bread || health_insurance == "n")
+    elsif !real_age && ( !wants_garlic_bread || !wants_health_insurance)
       vampire_status =  "Probably a vampire"
 
-    elsif real_age && (wants_garlic_bread || health_insurance == "y")
+    elsif real_age && (wants_garlic_bread || wants_health_insurance)
       vampire_status = "Probably not a vampire"
 
     else
