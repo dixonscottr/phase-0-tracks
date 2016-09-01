@@ -56,10 +56,18 @@ def consonant_shift(full_name)
   consonant_shifted_name.join("")
 end
 
-p consonant_shift("John Smith")
-puts consonant_shift("John Smith") == "Jojp Snivj"
+# p consonant_shift("John Smith")
+# puts consonant_shift("John Smith") == "Jojp Snivj"
 
 
 #Capitalize the first letters of both names
+def capitalize_name(full_name)
+  new_name = full_name.split(" ")
+  new_name = new_name.map {|name| name.capitalize}
+  new_name.join(" ")
+end
+
+p capitalize_name("john q smith")
+puts capitalize_name("john q smith") == "John Q Smith"
 
 #Return the fake name
