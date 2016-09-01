@@ -59,8 +59,18 @@ def capitalize_name(full_name)
   new_name.join(" ")
 end
 
-p capitalize_name("john q smith")
-puts capitalize_name("john q smith") == "John Q Smith"
+# p capitalize_name("john q smith")
+# puts capitalize_name("john q smith") == "John Q Smith"
 
 #Return the fake name
+
+def fake_namer(real_name)
+  fake_name = vowel_shift(real_name)
+  fake_name = consonant_shift(fake_name)
+  fake_name = swap_name(fake_name)
+  fake_name = capitalize_name(fake_name)
+end
+
+puts fake_namer("Felicia Torres")
+
 
