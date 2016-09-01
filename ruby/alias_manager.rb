@@ -71,13 +71,21 @@ def fake_namer(real_name)
   fake_name = capitalize_name(fake_name)
 end
 
+fake_names = {}
+
 puts "Welcome to the Pseudonym Maker!"
 puts "Please enter your real name to get a spy name: (type 'quit' to exit)"
 answer = gets.chomp
   while answer.downcase != "quit"
     spy_name = fake_namer(answer)
+    fake_names[answer] = spy_name
     puts "Your spy name is: #{spy_name}"
     puts "What is the next name to spy-ify?"
     answer = gets.chomp
   end
+
+puts "Thank you for using the Pseudonym Maker"
+fake_names.each do |real_name, spy_name|
+  puts "#{spy_name} is actually #{real_name}"
+end
 
