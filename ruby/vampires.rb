@@ -4,6 +4,16 @@ puts "Welcome to the Werewolf Inc. Vampire Detector"
 puts "How many employees would you like to process?"
 employee_num = gets.chomp.to_i
 
+#check if the age is real by comparing it to the current year - the age
+def real_age_checker(age, year_born)
+  current_year = Time.new.year
+  if current_year - year_born == age
+    true
+  else
+    false
+  end
+end
+
 #run loop for each employee
 counter = 0
 while counter < employee_num
@@ -17,6 +27,7 @@ while counter < employee_num
   age = gets.chomp.to_i
   puts "What year was the employee born?"
   year_born = gets.chomp.to_i
+  real_age = real_age_checker(age, year_born)
 
   #ask if they want garlic bread
   puts "Would the employee like to have the garlic bread in the company cafeteria? y/n"
@@ -37,16 +48,16 @@ while counter < employee_num
     if name == "Drake Cula" || name == "Tu Fang"
       vampire_status = "Definitely a vampire"
 
-    elsif (age != (2016-year_born)) && garlic_bread == "n" && health_insurance == "n"
+    elsif !real_age && garlic_bread == "n" && health_insurance == "n"
       vampire_status =  "Almost certainly a vampire"
 
     elsif allergy == "sunshine"
       vampire_status = "Probably a vampire"
 
-    elsif (age != (2016-year_born)) && (garlic_bread == "n" || health_insurance == "n")
+    elsif !real_age && (garlic_bread == "n" || health_insurance == "n")
       vampire_status =  "Probably a vampire"
 
-    elsif (age == (2016-year_born)) && (garlic_bread == "y" || health_insurance == "y")
+    elsif real_age && (garlic_bread == "y" || health_insurance == "y")
       vampire_status = "Probably not a vampire"
 
     else
