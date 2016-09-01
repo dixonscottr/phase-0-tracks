@@ -6,20 +6,12 @@ end
 # p swap_name("John Smith")
 # puts swap_name("John Smith") == "Smith John"
 
-#Change all letters to lowercase
-def to_lowercase(full_name)
-  lowercase_name = full_name.downcase
-end
-
-# p to_lowercase("John Smith")
-# puts to_lowercase("John Smith") == "john smith"
-
 #Go through the word and change all vowels (aeiou) to the next vowel
 
 def vowel_shift(full_name)
   vowels = "aeiou"
   vowel_shifted_name = []
-  full_name.chars do |letter|
+  full_name.downcase.chars do |letter|
     if vowels.include?(letter)
       vowel_idx = vowels.index(letter)
       if vowel_idx < 4
@@ -41,7 +33,7 @@ end
 def consonant_shift(full_name)
   consonants = "bcdfghjklmnpqrstvwxyz"
   consonant_shifted_name = []
-  full_name.chars do |letter|
+  full_name.downcase.chars do |letter|
     if consonants.include?(letter)
       c_idx = consonants.index(letter)
       if c_idx < (consonants.length - 1)
@@ -71,3 +63,4 @@ p capitalize_name("john q smith")
 puts capitalize_name("john q smith") == "John Q Smith"
 
 #Return the fake name
+
