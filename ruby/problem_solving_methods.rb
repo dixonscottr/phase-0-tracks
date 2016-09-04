@@ -1,3 +1,5 @@
+#paired with Bex Finken
+
 #release 0
 
 def search_array(array, num)
