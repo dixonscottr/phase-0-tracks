@@ -3,7 +3,7 @@ class Santa
   attr_reader :age, :ethnicity
   attr_accessor :gender
 
-  def initialize(gender, ethnicity, age=0)
+  def initialize(gender, ethnicity, age)
     puts "Initializing Santa instance..."
     @gender = gender
     @ethnicity = ethnicity
@@ -83,9 +83,8 @@ santa_num = 1
   puts "Creating Santa no. #{santa_num}"
   santa = Santa.new(gender, ethnicity, age)
 
-  p santa.age
-  p santa.gender
-  p santa.ethnicity
+  puts "Gender: #{santa.gender}"
+  puts "Ethnicity: #{santa.ethnicity}"
 
 
   santa_num += 1
