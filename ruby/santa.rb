@@ -22,3 +22,16 @@ end
 # st_nick.speak
 # st_nick.eat_milk_and_cookies("gingersnap")
 
+santas = []
+
+genders = ["male", "female", "gender fluid", "trans*", "agender", "other, ""prefer not to say"]
+
+ethnicities = ["black", "white", "Asian", "Native American", "Latino", "Arab", "Persian", "Aboriginal Australian", "other"]
+
+10.times do
+  gender = genders.shuffle.first
+  ethnicity = ethnicities.shuffle.first
+  santas << Santa.new(gender, ethnicity)
+end
+
+p santas
