@@ -48,10 +48,6 @@ end
 
 # santas = []
 
-genders = ["male", "female", "gender fluid", "trans*", "agender", "other", "prefer not to say"]
-
-ethnicities = ["black", "white", "Asian", "Native American", "Latino", "Arab", "Persian", "Aboriginal Australian", "other"]
-
 # 10.times do
 #   gender = genders.shuffle.first
 #   ethnicity = ethnicities.shuffle.first
@@ -73,23 +69,30 @@ ethnicities = ["black", "white", "Asian", "Native American", "Latino", "Arab", "
 # p santas[8].age
 # p santas[8].gender
 
-santa_num = 1
+def santa_maker(num)
+  genders = ["male", "female", "gender fluid", "trans*", "agender", "other", "prefer not to say"]
+  ethnicities = ["black", "white", "Asian", "Native American", "Latino", "Arab", "Persian", "Aboriginal Australian", "other"]
+  santa_num = 1
 
-10.times do
-  gender = genders.sample
-  ethnicity = ethnicities.sample
-  age = rand(0..140)
-  puts ""
-  puts "Creating Santa no. #{santa_num}"
-  santa = Santa.new(gender, ethnicity, age)
+  num.times do
+    gender = genders.sample
+    ethnicity = ethnicities.sample
+    age = rand(0..140)
+    puts ""
+    puts "Creating Santa no. #{santa_num}"
+    santa = Santa.new(gender, ethnicity, age)
 
-  puts "Gender: #{santa.gender}"
-  puts "Ethnicity: #{santa.ethnicity}"
+    puts "Gender: #{santa.gender}"
+    puts "Ethnicity: #{santa.ethnicity}"
 
 
-  santa_num += 1
+    santa_num += 1
+  end
 end
 
+puts "How many Santas would you like to make?"
+input = gets.chomp.to_i
 
+santa_maker(input)
 
 
