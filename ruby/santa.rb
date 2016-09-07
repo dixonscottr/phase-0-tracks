@@ -16,6 +16,27 @@ class Santa
     puts "That was a good #{cookie}"
   end
 
+  def celebrate_birthday
+    @age += 1
+  end
+
+  def get_mad_at(bad_reindeer)
+    @reindeer_ranking.delete(bad_reindeer)
+    @reindeer_ranking << bad_reindeer
+  end
+
+  def gender=(new_gender)
+    @gender = new_gender
+  end
+
+  def age
+    @age
+  end
+
+  def gender
+    @gender
+  end
+
 end
 
 # st_nick = Santa.new
@@ -35,3 +56,21 @@ ethnicities = ["black", "white", "Asian", "Native American", "Latino", "Arab", "
 end
 
 p santas[8]
+
+p santas[8].celebrate_birthday
+p santas[8].celebrate_birthday
+p santas[8].celebrate_birthday
+
+p santas[8]
+p santas[8].get_mad_at("Dasher")
+
+p santas[8]
+p santas[8].gender = "female"
+
+p santas[8].age
+p santas[8].gender
+
+
+
+
+
