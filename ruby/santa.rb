@@ -24,7 +24,7 @@ end
 
 santas = []
 
-genders = ["male", "female", "gender fluid", "trans*", "agender", "other, ""prefer not to say"]
+genders = ["male", "female", "gender fluid", "trans*", "agender", "other", "prefer not to say"]
 
 ethnicities = ["black", "white", "Asian", "Native American", "Latino", "Arab", "Persian", "Aboriginal Australian", "other"]
 
@@ -34,4 +34,4 @@ ethnicities = ["black", "white", "Asian", "Native American", "Latino", "Arab", "
   santas << Santa.new(gender, ethnicity)
 end
 
-p santas
+p santas[8]
