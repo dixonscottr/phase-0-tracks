@@ -95,9 +95,31 @@ def remove_item(item, list)
     list
 end
 # output: an updated hash
+
+#Method to update the quantity of an item
+
+# input: item name, quantity, list
+def change_qty(item, quantity, list)
+    #   Check if the list has the lowercased item name
+    #   IF the list has the item name
+    if list.include?(item.downcase)
+        # Update the item name's quantity value to be the new quantity from the input 
+        list[item.downcase] = quantity
+        #       Print out the updated list hash to the console
+        puts list
+    #   IF the item isn't in the list
+    else
+        # Print a warning to the console that the item doesn't exist
+        puts "#{item.capitalize} is not on the list!"
+    end
+    # output: an updated hash
+    list    
+end
+
 # DRIVER CODE:
 new_list = create_list(input)
 add_item("juice", 2, new_list)
 add_item("bananas", new_list)
 new_list = add_item("Apples", 45, new_list)
-remove_item("bananas", new_list)
+new_list = remove_item("bananas", new_list)
+change_qty("juice", 3, new_list)
