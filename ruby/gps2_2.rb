@@ -116,10 +116,22 @@ def change_qty(item, quantity, list)
     list    
 end
 
+#Method to print list
+
+# input: list
+def print_list(list)
+    #   Print an introduction to the list to the console
+    puts "Groceries I need to buy:"
+    #   Print out each item name with its quantity as "Item name: Quantity"
+    list.each {|item, qty| puts "*  #{item.capitalize}: #{qty}"}
+end
+
 # DRIVER CODE:
+input = "carrots apples"
 new_list = create_list(input)
 add_item("juice", 2, new_list)
 add_item("bananas", new_list)
 new_list = add_item("Apples", 45, new_list)
 new_list = remove_item("bananas", new_list)
-change_qty("juice", 3, new_list)
+change_qty("carrots", 3, new_list)
+print_list(new_list)
