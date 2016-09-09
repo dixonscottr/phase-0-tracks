@@ -1,0 +1,67 @@
+#Pseudocode
+#
+# Ask for and store the word to guess
+# Create a value that shows how the player has guessed, replacing the letters with underscores
+# Create a value to show the number the player has guessed with the initial value being the number of letters in the word to guess
+# Create a list to store the letters a player has guessed
+# Create a value of game over and set it to false
+# Create a value of game won and set it to false
+#
+# Until the game is over or the game is won
+  # Print out the guessed word to the console
+  # Print out how many guesses are left
+  # IF the player has guessed a letter, print out which letters the player has guessed
+  # Accept a letter as input to guess the word
+    # IF the word includes the the letter
+      # Check the index of the letter in the word
+      # Replace the underscore(s) with the letter in the corresponding index in the guessed word
+      # decrease guess count by 1
+      # add the letter to the guessed letters list
+    # IF the word doesn't include the letter
+      # Decrease guess count by 1
+      # Print a message telling the user that letter isn't in the word
+    # IF the letter is in the list of letters already guessed
+      # Print a message telling the user that the letter has already been guessed
+  # IF the guessed word matches the original word
+    # Change the game won value to true
+  # IF the guess count equals 0
+    # Change the game over value to true
+# IF the game was won
+  # Print a message to the console telling the user they won the game in a number of guesses
+# IF the game wasn't won
+  # Print a message to the console telling the user they lost and show them the word they couldn't guess
+
+# Methods needed
+#
+# has_letter
+  # input: letter, word
+  # Checks if a letter is included in a word
+  # output: boolean
+# guess_letter
+  # input: letter, word
+    # Checks if a letter is in a word
+      # IF the letter is in the word
+        # Count how many letters are in the word
+        # Until all letters are replaced
+          # Check the index of the letter in the word
+          # Replace the underscore with the letter(s) in the corresponding index in the guessed word
+        # decrease guess count by 1
+        # add the letter to the guessed letters list
+      # IF the letter isn't in the word
+        # Decrease guess count by 1
+        # Print a message telling the user that letter isn't in the word
+      # IF the letter is in the list of letters already guessed
+        # Print a message telling the user that the letter has already been guessed
+  # output: a guessed word (possibly with dashes)
+# has_guessed
+  # input: letter, list of letters
+  # Check if a letter is in the list of letters already guessed
+  # output: boolean
+
+# Variables needed
+# 
+# mystery_word
+# guessed_word
+# guess_count
+# game_won
+# game_over
