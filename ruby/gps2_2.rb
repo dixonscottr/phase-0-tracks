@@ -44,6 +44,22 @@ steps:
 output: nil (since this method just prints to the console)
 =end
  
+=begin
+Method to check if hash has a key:
+Input: hash, key
+Steps: Check to see if hash contains a key
+Output: Boolean
+=end
+def has_item(hash, key)
+    if hash.has_key?(key.downcase)
+        return true
+    else
+        return false
+    end
+end
+# hash = {"hi" => "hello", "sup" => "how are you"}
+# puts has_item(hash, "hi")
+# puts has_item(hash, "bye")
 # input: string of items separated by spaces (example: "carrots apples cereal pizza")
 def create_list(input)
   # Lowercase the input and seperate individual items by spaces, then store it
@@ -51,9 +67,7 @@ def create_list(input)
   # Create a new empty list
   list = {}
   # Iterate through the stored item names and store each one in the list with its value as 0--the default quantity
-  array.map do |x|
-    list[x] = 0
-  end
+  array.map { |x| list[x] = 0 }
   # Print the list to the console
   puts "Here is the updated list: #{list}"
   # output: a new hash with item names and keys and quantity (the default of 0) as values
@@ -64,11 +78,11 @@ end
 def add_item(item, quantity=0, list)
   # Check if the list already has the lowercased item name
   # IF the list already has the item name, print a warning that the item doesn't exist
-  if list.has_key?(item.downcase)
+  if has_item(list, item)
     # Add the item name with the optional quantity to the end of the list
     puts "We already have #{item.downcase}!"  
   # IF the list doesn't have the item name
-  elsif !(list.include?(item.downcase))
+  elsif !has_item(list, item)
     list[item.downcase] = quantity
     puts "Here is the updated list: #{list}"
   end
@@ -80,7 +94,7 @@ def remove_item(item, list)
 # steps:
 #   Check if the list has the lowercased item name
 #   IF the list has the item name, delete the item along with its quantity value
-    if list.has_key?(item.downcase)
+    if has_item(list, item)
         list.delete(item)
         # Print out the updated list hash to the console
         puts "Here is the updated list: #{list}"
@@ -97,7 +111,7 @@ end
 def change_qty(item, quantity, list)
     #   Check if the list has the lowercased item name
     #   IF the list has the item name
-    if list.include?(item.downcase)
+    if has_item(list, item)
         # Update the item name's quantity value to be the new quantity from the input 
         list[item.downcase] = quantity
         #       Print out the updated list hash to the console
