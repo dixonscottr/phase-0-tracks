@@ -85,6 +85,8 @@
 
 #Class declaration
 
+require_relative 'random_word'
+
 class MatchingGame
   
   attr_reader :game_won, :game_over, :guessed_letters, :guess_count, :guesses_left
@@ -161,6 +163,10 @@ class MatchingGame
     @guessed_word
   end
 
+  include RandomWord
+
+
+
 end
 
 #User Interface
@@ -179,7 +185,7 @@ if answer == "y" || answer == "yes"
   system('clear')
 else
   puts "Then I will make select a word for you to guess"
-  game.create_mystery_word("hello world")
+  game.create_mystery_word(game.random_word)
 end
 
 

@@ -1,9 +1,7 @@
-
-
 #Module declaration
 
 module RandomWord
-  def self.random_word
+  def random_word
     random_words = %w[
       lemon
       season
@@ -509,6 +507,3 @@ module RandomWord
       random_words.sample
   end
 end
-
-puts RandomWord.random_word
-
