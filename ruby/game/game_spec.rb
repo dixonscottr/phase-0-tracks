@@ -25,12 +25,12 @@ describe MatchingGame do
 
   it "makes the number of guesses equal to the number of letters in a word" do
     game.create_mystery_word("hello")
-    expect(game).to have_attributes guess_count: 5
+    expect(game).to have_attributes guesses_left: 5
   end
 
   it "makes the number of guesses equal to the number of letters in a phrase" do
     game.create_mystery_word("hello world")
-    expect(game).to have_attributes guess_count: 10
+    expect(game).to have_attributes guesses_left: 10
   end
 
   it "guesses a letter and updates the guessed word if correct" do
@@ -41,20 +41,20 @@ describe MatchingGame do
   it "guesses a letter correctly and decreases the guess count by 1" do
     game.create_mystery_word("hello")
     game.guess_letter("h")
-    expect(game).to have_attributes guess_count: 4
+    expect(game).to have_attributes guesses_left: 4
   end
 
   it "guesses a letter incorrectly and decreases the guess count by 1" do
     game.create_mystery_word("hello")
     game.guess_letter("x")
-    expect(game).to have_attributes guess_count: 4
+    expect(game).to have_attributes guesses_left: 4
   end
 
   it "guesses a previously guessed letter and keeps the same guess count" do
     game.create_mystery_word("hello")
     game.guess_letter("h")
     game.guess_letter("h")
-    expect(game).to have_attributes guess_count: 4
+    expect(game).to have_attributes guesses_left: 4
   end
 
   it "changes the game over status to true if guess count goes to 0" do
