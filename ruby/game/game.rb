@@ -65,3 +65,31 @@
 # guess_count
 # game_won
 # game_over
+
+
+class MatchingGame
+  
+  attr_reader :game_won, :game_over, :guess_count
+  attr_accessor :mystery_word, :guessed_word
+
+  def initialize
+    @game_won = false
+    @game_over = false
+    @guess_count = 0
+  end
+
+
+
+
+end
+
+game = MatchingGame.new
+puts game.game_won
+puts game.game_over
+puts game.guess_count
+
+
+
+
+
+
