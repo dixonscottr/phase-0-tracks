@@ -86,24 +86,25 @@
 
 class MatchingGame
   
-  attr_reader :game_won, :game_over, :guessed_letters
-  attr_accessor :mystery_word, :guessed_word, :guess_count
+  attr_reader :game_won, :game_over, :guessed_letters, :guess_count, :guesses_left
+  attr_accessor :mystery_word, :guessed_word
 
   def initialize
     @game_won = false
     @game_over = false
     @guessed_letters = []
     @guessed_word = ''
+    @guess_count = 0
   end
 
   def print_update
-    puts "The word is #{@guessed_word} and you have #{@guess_count} guesses left"
+    puts "The word is #{@guessed_word} and you have #{@guesses_left} guesses left"
   end
 
   def create_mystery_word(word)
     @mystery_word = word.downcase
     num_letters = @mystery_word.delete(" ").length
-    @guess_count = num_letters
+    @guesses_left = num_letters
     @mystery_word.chars.each do |ltr|
       if ltr == " "
         @guessed_word << ltr
@@ -135,18 +136,20 @@ class MatchingGame
    if @guessed_letters.include?(letter)
      puts "You have already guessed #{letter}"
    elsif @mystery_word.include?(letter)
-     @guess_count -= 1
+     @guess_count += 1
+     @guesses_left -= 1
      replace_blank(letter)
      guessed_letters << letter
      print_update
    else
      @guess_count -=1
+     @guesses_left -= 1
      puts "Sorry. No '#{letter}' in the word"
      guessed_letters << letter
      print_update
   end
   
-  if @guess_count == 0
+  if @guesses_left == 0
     @game_over = true
   end
 
@@ -174,12 +177,14 @@ until game.game_won || game.game_over
   print "Enter the letter you'd like to guess: "
   letter = gets.chomp.downcase
   game.guess_letter(letter)
+  p game.guess_count
+  p game.guesses_left
 end
 
-# p game
+p game
 
 if game.game_won
-  puts "Congratulations! You won in only #{game.guess_count} guesses!"
+  puts "Congratulations! You won in only #{game.guess_count } guesses!"
 else
   puts "Wow... Great job losing."
   puts "You made #{game.guess_count} guesses and you still couldn't guess my word"
