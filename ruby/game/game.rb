@@ -57,6 +57,10 @@
   # input: letter, list of letters
   # Check if a letter is in the list of letters already guessed
   # output: boolean
+#print_update
+  # input: guessed word, number of guesses left
+  # Prints out to the console the current status of the guessed word along with the number of guesses left
+  # output: nil
 
 # Variables needed
 # 
@@ -65,19 +69,23 @@
 # guess_count
 # game_won
 # game_over
+# guessed_letters
 
 
 class MatchingGame
   
-  attr_reader :game_won, :game_over, :guess_count
-  attr_accessor :mystery_word, :guessed_word
+  attr_reader :game_won, :game_over, :guessed_letters
+  attr_accessor :mystery_word, :guessed_word, :guess_count
 
   def initialize
     @game_won = false
     @game_over = false
-    @guess_count = 0
+    @guessed_letters = []
   end
 
+  def print_update
+    puts "The word is #{@guessed_word} and you have #{@guess_count} guesses left"
+  end
 
 
 
@@ -87,6 +95,7 @@ game = MatchingGame.new
 puts game.game_won
 puts game.game_over
 puts game.guess_count
+puts game.print_update
 
 
 
