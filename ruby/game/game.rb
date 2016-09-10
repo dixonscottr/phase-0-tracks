@@ -57,10 +57,19 @@
   # input: letter, list of letters
   # Check if a letter is in the list of letters already guessed
   # output: boolean
+
+
 #print_update
   # input: guessed word, number of guesses left
   # Prints out to the console the current status of the guessed word along with the number of guesses left
   # output: nil
+
+#create_mystery_word
+  # input: word to guess
+  # Determine number of letter in the word and store it as "num_letters"
+  # Set the number of guesses to num_letters
+  # Set the guessed_word to equal num_letters number of _'s
+  # output: guessed word with underscores
 
 # Variables needed
 # 
@@ -81,11 +90,23 @@ class MatchingGame
     @game_won = false
     @game_over = false
     @guessed_letters = []
+    @guessed_word = ''
   end
 
   def print_update
     puts "The word is #{@guessed_word} and you have #{@guess_count} guesses left"
   end
+
+  def create_mystery_word(word)
+    @mystery_word = word.downcase
+    num_letters = mystery_word.length
+    @guess_count = num_letters
+    num_letters.times { @guessed_word << '_' }
+    @guessed_word
+  end
+
+
+
 
 
 
@@ -96,6 +117,11 @@ puts game.game_won
 puts game.game_over
 puts game.guess_count
 puts game.print_update
+puts game.create_mystery_word("Beaver")
+puts game.guess_count
+puts game.print_update
+
+
 
 
 
