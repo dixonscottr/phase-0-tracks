@@ -33,10 +33,6 @@
 
 # Methods needed
 #
-# has_letter
-  # input: letter, word
-  # Checks if a letter is included in a word
-  # output: boolean
 # guess_letter
   # input: letter, word
     # Checks if a letter is in a word
@@ -54,24 +50,19 @@
         # Print a message telling the user that the letter has already been guessed
     #Checks if the game has been won or if the guess count has reached 0
   # output: a guessed word (possibly with dashes)
-# has_guessed
-  # input: letter, list of letters
-  # Check if a letter is in the list of letters already guessed
-  # output: boolean
-
-
+#
 #print_update
   # input: guessed word, number of guesses left
   # Prints out to the console the current status of the guessed word along with the number of guesses left
   # output: nil
-
+#
 # create_mystery_word
   # input: word to guess
   # Determine number of letter in the word and store it as "num_letters"
   # Set the number of guesses to num_letters
   # Set the guessed_word to equal num_letters number of _'s
   # output: guessed word with underscores
-
+#
 # replace_blank
   # input: letter, mystery word, guessed word
     # IF the letter is only in the word once:
@@ -168,14 +159,40 @@ class MatchingGame
 
 end
 
-#driver code
+#User Interface
 
 game = MatchingGame.new
+
+puts "Welcome to the Matching Game"
+puts "You have a limited number of guesses to make a match"
+puts "Good luck"
+
+game.create_mystery_word("hello world")
+game.print_update
+
+until game.game_won || game.game_over
+  print "Enter the letter you'd like to guess: "
+  letter = gets.chomp.downcase
+  game.guess_letter(letter)
+end
+
+# p game
+
+if game.game_won
+  puts "Congratulations! You won in only #{game.guess_count} guesses!"
+else
+  puts "Wow... Great job losing."
+  puts "You made #{game.guess_count} guesses and you still couldn't guess my word"
+end
+
+#driver code
+
+# game = MatchingGame.new
 # puts game.game_won
 # puts game.game_over
 # puts game.guess_count
 # puts game.print_update
-game.create_mystery_word("hello world")
+# game.create_mystery_word("hello world")
 # puts game.guess_count
 # puts game.print_update
 # puts game.replace_blank("h")
@@ -194,18 +211,18 @@ game.create_mystery_word("hello world")
 # game.guess_letter("r")
 # game.guess_letter("d")
 # p game
-game.guess_letter("x")
-game.guess_letter("m")
-game.guess_letter("b")
-game.guess_letter("t")
-game.guess_letter("r")
-game.guess_letter("w")
-game.guess_letter("u")
-game.guess_letter("n")
-game.guess_letter("m")
-game.guess_letter("h")
-game.guess_letter("d")
-p game
+# game.guess_letter("x")
+# game.guess_letter("m")
+# game.guess_letter("b")
+# game.guess_letter("t")
+# game.guess_letter("r")
+# game.guess_letter("w")
+# game.guess_letter("u")
+# game.guess_letter("n")
+# game.guess_letter("m")
+# game.guess_letter("h")
+# game.guess_letter("d")
+# p game
 
 
 
