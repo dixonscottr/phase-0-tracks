@@ -64,12 +64,23 @@
   # Prints out to the console the current status of the guessed word along with the number of guesses left
   # output: nil
 
-#create_mystery_word
+# create_mystery_word
   # input: word to guess
   # Determine number of letter in the word and store it as "num_letters"
   # Set the number of guesses to num_letters
   # Set the guessed_word to equal num_letters number of _'s
   # output: guessed word with underscores
+
+# replace_blank
+  # input: letter, mystery word, guessed word
+    # IF the letter is only in the word once:
+      # Check the index of the letter in the word
+      # Update the guessed word, putting in the letter in the same index where it is in the word
+    # IF the letter is in the word multiple times:
+      # create a blank list of indexes
+      # Change string to array and loop through it checking for the letter, store the indexes in the above list
+      # Loop through the list of indexes and updated the guessed word with each index (|x| guessed_word[x] = letter)
+  # output: guessed word
 
 # Variables needed
 # 
@@ -105,6 +116,22 @@ class MatchingGame
     @guessed_word
   end
 
+  def replace_blank(letter) #mystery_word, guessed_word
+    if @mystery_word.count(letter) < 2
+      letter_idx = @mystery_word.index(letter)
+      # p @mystery_word
+      # p letter_idx
+      @guessed_word[letter_idx] = letter
+    else
+      # p letter
+      letter_idxs = []
+      @mystery_word.chars.each_with_index { |ltr, idx| ltr == letter ? letter_idxs << idx : nil }
+      # p letter_idxs
+      letter_idxs.each {|x| @guessed_word[x] = letter }
+    end
+    @guessed_word
+  end
+
 
 
 
@@ -117,9 +144,12 @@ puts game.game_won
 puts game.game_over
 puts game.guess_count
 puts game.print_update
-puts game.create_mystery_word("Beaver")
+puts game.create_mystery_word("hello")
 puts game.guess_count
 puts game.print_update
+puts game.replace_blank("h")
+puts game.replace_blank("l")
+game.print_update
 
 
 
