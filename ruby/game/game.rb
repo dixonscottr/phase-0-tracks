@@ -112,7 +112,14 @@ class MatchingGame
     @mystery_word = word.downcase
     num_letters = @mystery_word.delete(" ").length
     @guess_count = num_letters
-    num_letters.times { @guessed_word << '_' }
+    @mystery_word.chars.each do |ltr|
+      if ltr == " "
+        @guessed_word << ltr
+      else
+        @guessed_word << "_"
+      end
+    end
+
     @guessed_word
   end
 
