@@ -168,13 +168,19 @@ end
 game = MatchingGame.new
 
 puts "Welcome to the Matching Game"
-puts "You have a limited number of guesses to make a match"
-puts "Good luck"
+puts "You will have a limited number of guesses to make a match"
 
-puts "Player One, put in the word for Player Two to guess"
-word = gets.chomp
-game.create_mystery_word(word)
-system('clear')
+puts "Are you playing with another player? (y/n)"
+answer = gets.downcase.chomp
+if answer == "y" || answer == "yes"
+  puts "Player One, put in the word for Player Two to guess"
+  word = gets.chomp
+  game.create_mystery_word(word)
+  system('clear')
+else
+  puts "Then I will make select a word for you to guess"
+  game.create_mystery_word("hello world")
+end
 
 
 game.print_update
