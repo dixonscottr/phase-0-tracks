@@ -25,12 +25,12 @@ describe MatchingGame do
 
   it "makes the number of guesses equal to the number of letters in a word" do
     game.create_mystery_word("hello")
-    expect(game).to have_attributes guesses_left: 5
+    expect(game).to have_attributes guesses_left: 10
   end
 
   it "makes the number of guesses equal to the number of letters in a phrase" do
     game.create_mystery_word("hello world")
-    expect(game).to have_attributes guesses_left: 10
+    expect(game).to have_attributes guesses_left: 15
   end
 
   it "guesses a letter and updates the guessed word if correct" do
@@ -41,29 +41,34 @@ describe MatchingGame do
   it "guesses a letter correctly and decreases the guess count by 1" do
     game.create_mystery_word("hello")
     game.guess_letter("h")
-    expect(game).to have_attributes guesses_left: 4
+    expect(game).to have_attributes guesses_left: 9
   end
 
   it "guesses a letter incorrectly and decreases the guess count by 1" do
     game.create_mystery_word("hello")
     game.guess_letter("x")
-    expect(game).to have_attributes guesses_left: 4
+    expect(game).to have_attributes guesses_left: 9
   end
 
   it "guesses a previously guessed letter and keeps the same guess count" do
     game.create_mystery_word("hello")
     game.guess_letter("h")
     game.guess_letter("h")
-    expect(game).to have_attributes guesses_left: 4
+    expect(game).to have_attributes guesses_left: 9
   end
 
-  it "changes the game over status to true if guess count goes to 0" do
-    game.create_mystery_word("hello")
-    game.guess_letter("h")
+  it "changes the game over status to true if 0 guesses are left" do
+    game.create_mystery_word("hello") #10 guesses left
     game.guess_letter("x")
-    game.guess_letter("p")
-    game.guess_letter("c")
+    game.guess_letter("a")
+    game.guess_letter("h")
     game.guess_letter("l")
+    game.guess_letter("n")
+    game.guess_letter("p")
+    game.guess_letter("o")
+    game.guess_letter("z")
+    game.guess_letter("w")
+    game.guess_letter("d")
     expect(game).to have_attributes game_over: true
   end
 

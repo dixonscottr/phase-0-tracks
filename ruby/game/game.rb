@@ -83,6 +83,7 @@
 # game_over
 # guessed_letters
 
+#Class declaration
 
 class MatchingGame
   
@@ -104,7 +105,7 @@ class MatchingGame
   def create_mystery_word(word)
     @mystery_word = word.downcase
     num_letters = @mystery_word.delete(" ").length
-    @guesses_left = num_letters
+    @guesses_left = num_letters + 5
     @mystery_word.chars.each do |ltr|
       if ltr == " "
         @guessed_word << ltr
@@ -142,7 +143,7 @@ class MatchingGame
      guessed_letters << letter
      print_update
    else
-     @guess_count -=1
+     @guess_count +=1
      @guesses_left -= 1
      puts "Sorry. No '#{letter}' in the word"
      guessed_letters << letter
