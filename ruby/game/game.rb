@@ -77,11 +77,10 @@ class MatchingGame
   attr_reader :game_won, :game_over, :guessed_letters
   attr_accessor :mystery_word, :guessed_word, :guess_count
 
-  def initialize(mystery_word)
+  def initialize
     @game_won = false
     @game_over = false
     @guessed_letters = []
-    @mystery_word = mystery_word
   end
 
   def print_update
@@ -97,6 +96,7 @@ puts game.game_won
 puts game.game_over
 puts game.guess_count
 puts game.print_update
+
 
 
 
