@@ -136,8 +136,10 @@ class MatchingGame
   end
 
   def guess_letter(letter)
-   if @guessed_letters.include?(letter)
-     puts "You have already guessed #{letter}"
+   if letter.size > 1
+    puts "One letter at a time please"
+   elsif @guessed_letters.include?(letter)
+     puts "You have already guessed '#{letter}'"
    elsif @mystery_word.include?(letter)
      @guess_count += 1
      @guesses_left -= 1

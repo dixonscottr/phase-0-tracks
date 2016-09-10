@@ -82,4 +82,10 @@ describe MatchingGame do
     expect(game).to have_attributes game_won: true
   end
 
+  it "only accepts one letter at a time" do
+    game.create_mystery_word("hello")
+    game.guess_letter("hello")
+    expect(game).to have_attributes guesses_left: 10
+  end
+
 end
