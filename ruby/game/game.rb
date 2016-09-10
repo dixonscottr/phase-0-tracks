@@ -52,6 +52,7 @@
         # Print a message telling the user that letter isn't in the word
       # IF the letter is in the list of letters already guessed
         # Print a message telling the user that the letter has already been guessed
+    #Checks if the game has been won or if the guess count has reached 0
   # output: a guessed word (possibly with dashes)
 # has_guessed
   # input: letter, list of letters
@@ -167,13 +168,15 @@ class MatchingGame
 
 end
 
+#driver code
+
 game = MatchingGame.new
-puts game.game_won
-puts game.game_over
-puts game.guess_count
-puts game.print_update
-puts game.create_mystery_word("hello world")
-puts game.guess_count
+# puts game.game_won
+# puts game.game_over
+# puts game.guess_count
+# puts game.print_update
+game.create_mystery_word("hello world")
+# puts game.guess_count
 # puts game.print_update
 # puts game.replace_blank("h")
 # puts game.replace_blank("l")
@@ -185,6 +188,25 @@ puts game.guess_count
 # p game
 # game.guess_letter("l")
 # p game
+# game.guess_letter("o")
+# game.guess_letter("e")
+# game.guess_letter("w")
+# game.guess_letter("r")
+# game.guess_letter("d")
+# p game
+game.guess_letter("x")
+game.guess_letter("m")
+game.guess_letter("b")
+game.guess_letter("t")
+game.guess_letter("r")
+game.guess_letter("w")
+game.guess_letter("u")
+game.guess_letter("n")
+game.guess_letter("m")
+game.guess_letter("h")
+game.guess_letter("d")
+p game
+
 
 
 
