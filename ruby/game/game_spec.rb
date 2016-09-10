@@ -1,7 +1,7 @@
 require_relative "game"
 
-  describe MatchingGame do
-    let(:game) {MatchingGame.new}
+describe MatchingGame do
+  let(:game) {MatchingGame.new}
 
   it "replaces an underscore with the correct letter" do
     game.mystery_word = "hello"
@@ -57,5 +57,24 @@ require_relative "game"
     expect(game).to have_attributes guess_count: 4
   end
 
+  it "changes the game over status to true if guess count goes to 0" do
+    game.create_mystery_word("hello")
+    game.guess_letter("h")
+    game.guess_letter("x")
+    game.guess_letter("p")
+    game.guess_letter("c")
+    game.guess_letter("l")
+    expect(game).to have_attributes game_over: true
+  end
+
+  it "changes the game won status to true if guessed and mystery word are the same" do
+    game.create_mystery_word("hello")
+    game.guess_letter("h")
+    game.guess_letter("e")
+    game.guess_letter("l")
+    game.guess_letter("l")
+    game.guess_letter("o")
+    expect(game).to have_attributes game_won: true
+  end
 
 end
