@@ -132,24 +132,43 @@ class MatchingGame
     @guessed_word
   end
 
-
-
-
-
+  def guess_letter(letter)
+   if @guessed_letters.include?(letter)
+     puts "You have already guessed #{letter}"
+   elsif @mystery_word.include?(letter)
+     @guess_count -= 1
+     replace_blank(letter)
+     guessed_letters << letter
+     print_update
+   else
+     @guess_count -=1
+     puts "Sorry. No '#{letter}' in the word"
+     guessed_letters << letter
+     print_update
+   end
+   @guessed_word
+  end
 
 end
 
-game = MatchingGame.new
-puts game.game_won
-puts game.game_over
-puts game.guess_count
-puts game.print_update
-puts game.create_mystery_word("hello")
-puts game.guess_count
-puts game.print_update
-puts game.replace_blank("h")
-puts game.replace_blank("l")
-game.print_update
+# game = MatchingGame.new
+# puts game.game_won
+# puts game.game_over
+# puts game.guess_count
+# puts game.print_update
+# puts game.create_mystery_word("hello")
+# puts game.guess_count
+# puts game.print_update
+# puts game.replace_blank("h")
+# puts game.replace_blank("l")
+# game.print_update
+
+# game.guess_letter("h")
+# p game
+# game.guess_letter("x")
+# p game
+# game.guess_letter("l")
+# p game
 
 
 
