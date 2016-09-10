@@ -147,14 +147,13 @@ class MatchingGame
      print_update
   end
   
-    if @guess_count == 0
-      @game_over = true
-    end
+  if @guess_count == 0
+    @game_over = true
+  end
 
-    if @guessed_word == @mystery_word
-      @game_won = true
-    else
-    end
+  if @guessed_word == @mystery_word
+    @game_won = true
+  end
   
     @guessed_word
   end
