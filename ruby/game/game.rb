@@ -145,8 +145,18 @@ class MatchingGame
      puts "Sorry. No '#{letter}' in the word"
      guessed_letters << letter
      print_update
-   end
-   @guessed_word
+  end
+  
+    if @guess_count == 0
+      @game_over = true
+    end
+
+    if @guessed_word == @mystery_word
+      @game_won = true
+    else
+    end
+  
+    @guessed_word
   end
 
 end
