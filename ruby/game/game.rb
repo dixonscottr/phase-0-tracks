@@ -171,7 +171,12 @@ puts "Welcome to the Matching Game"
 puts "You have a limited number of guesses to make a match"
 puts "Good luck"
 
-game.create_mystery_word("hello world")
+puts "Player One, put in the word for Player Two to guess"
+word = gets.chomp
+game.create_mystery_word(word)
+system('clear')
+
+
 game.print_update
 
 until game.game_won || game.game_over
