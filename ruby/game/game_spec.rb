@@ -35,7 +35,7 @@ require_relative "game"
 
   it "guesses a letter and updates the guessed word if correct" do
     game.create_mystery_word("hello")
-    expect(game.guess_letter("h")).to eq ("h")
+    expect(game.guess_letter("h")).to eq ("h____")
   end
 
   it "guesses a letter correctly and decreases the guess count by 1" do
