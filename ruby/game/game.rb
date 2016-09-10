@@ -110,7 +110,7 @@ class MatchingGame
 
   def create_mystery_word(word)
     @mystery_word = word.downcase
-    num_letters = mystery_word.length
+    num_letters = @mystery_word.delete(" ").length
     @guess_count = num_letters
     num_letters.times { @guessed_word << '_' }
     @guessed_word
@@ -160,13 +160,13 @@ class MatchingGame
 
 end
 
-# game = MatchingGame.new
-# puts game.game_won
-# puts game.game_over
-# puts game.guess_count
-# puts game.print_update
-# puts game.create_mystery_word("hello")
-# puts game.guess_count
+game = MatchingGame.new
+puts game.game_won
+puts game.game_over
+puts game.guess_count
+puts game.print_update
+puts game.create_mystery_word("hello world")
+puts game.guess_count
 # puts game.print_update
 # puts game.replace_blank("h")
 # puts game.replace_blank("l")
