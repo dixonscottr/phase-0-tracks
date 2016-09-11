@@ -119,7 +119,7 @@ class MatchingGame
     @guessed_word
   end
 
-  def replace_blank(letter) #mystery_word, guessed_word
+  def replace_blank(letter)
     if @mystery_word.count(letter) < 2
       letter_idx = @mystery_word.index(letter)
       # p @mystery_word
@@ -161,6 +161,7 @@ class MatchingGame
   if @guessed_word == @mystery_word
     @game_won = true
   end
+  puts " "
   
     @guessed_word
   end
@@ -171,46 +172,47 @@ class MatchingGame
 
 end
 
-#User Interface
+#USER INTERFACE
+#(comment out to run rspec)
 
-game = MatchingGame.new
+# game = MatchingGame.new
 
-puts "Welcome to the Matching Game"
-puts "You will have a limited number of guesses to make a match"
+# puts "Welcome to the Matching Game"
+# puts "You will have a limited number of guesses to make a match"
 
-puts "Are you playing with another player? (y/n)"
-answer = gets.downcase.chomp
-if answer == "y" || answer == "yes"
-  puts "Player One, put in the word for Player Two to guess"
-  word = gets.chomp
-  game.create_mystery_word(word)
-  system('clear')
-else
-  puts "Then I will make select a word for you to guess"
-  game.create_mystery_word(game.random_word)
-end
+# puts "Are you playing with another player? (y/n)"
+# answer = gets.downcase.chomp
+# if answer == "y" || answer == "yes"
+#   puts "Player One, put in the word for Player Two to guess"
+#   word = gets.chomp
+#   game.create_mystery_word(word)
+#   system('clear')
+# else
+#   puts "Then I will make select a word for you to guess"
+#   game.create_mystery_word(game.random_word)
+# end
 
 
-game.print_update
+# game.print_update
 
-until game.game_won || game.game_over
-  print "Enter the letter you'd like to guess: "
-  letter = gets.chomp.downcase
-  game.guess_letter(letter)
-  p game.guess_count
-  p game.guesses_left
-end
+# until game.game_won || game.game_over
+#   print "Enter the letter you'd like to guess: "
+#   letter = gets.chomp.downcase
+#   game.guess_letter(letter)
+#   # p game.guess_count
+#   # p game.guesses_left
+# end
 
-p game
+# # p game
 
-if game.game_won
-  puts "Congratulations! You won in only #{game.guess_count } guesses!"
-else
-  puts "Wow... Great job losing."
-  puts "You made #{game.guess_count} guesses and you still couldn't guess my word"
-end
+# if game.game_won
+#   puts "Congratulations! You won in only #{game.guess_count } guesses!"
+# else
+#   puts "Wow... Great job losing."
+#   puts "You made #{game.guess_count} guesses and you still couldn't guess my word"
+# end
 
-#driver code
+#DRIVER CODE
 
 # game = MatchingGame.new
 # puts game.game_won
