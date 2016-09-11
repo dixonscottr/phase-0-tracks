@@ -89,7 +89,7 @@ require_relative 'random_word'
 
 class MatchingGame
   
-  attr_reader :game_won, :game_over, :guessed_letters, :guess_count, :guesses_left
+  attr_reader :game_won, :game_over, :guessed_letters, :guess_count, :guesses_left, :num_letters
   attr_accessor :mystery_word, :guessed_word
 
   def initialize
@@ -106,8 +106,8 @@ class MatchingGame
 
   def create_mystery_word(word)
     @mystery_word = word.downcase
-    num_letters = @mystery_word.delete(" ").length
-    @guesses_left = num_letters + 5
+    @num_letters = @mystery_word.delete(" ").length
+    @guesses_left = @num_letters + 5
     @mystery_word.chars.each do |ltr|
       if ltr == " "
         @guessed_word << ltr
@@ -175,42 +175,42 @@ end
 #USER INTERFACE
 #(comment out to run rspec)
 
-# game = MatchingGame.new
+game = MatchingGame.new
 
-# puts "Welcome to the Matching Game"
-# puts "You will have a limited number of guesses to make a match"
+puts "Welcome to the Matching Game"
+puts "You will have a limited number of guesses to make a match"
 
-# puts "Are you playing with another player? (y/n)"
-# answer = gets.downcase.chomp
-# if answer == "y" || answer == "yes"
-#   puts "Player One, put in the word for Player Two to guess"
-#   word = gets.chomp
-#   game.create_mystery_word(word)
-#   system('clear')
-# else
-#   puts "Then I will make select a word for you to guess"
-#   game.create_mystery_word(game.random_word)
-# end
+puts "Are you playing with another player? (y/n)"
+answer = gets.downcase.chomp
+if answer == "y" || answer == "yes"
+  puts "Player One, put in the word for Player Two to guess"
+  word = gets.chomp
+  game.create_mystery_word(word)
+  system('clear')
+else
+  puts "Then I will make select a word for you to guess"
+  game.create_mystery_word(game.random_word)
+end
 
+puts "The word has #{game.num_letters} letters"
+game.print_update
 
-# game.print_update
+until game.game_won || game.game_over
+  print "Enter the letter you'd like to guess: "
+  letter = gets.chomp.downcase
+  game.guess_letter(letter)
+  # p game.guess_count
+  # p game.guesses_left
+end
 
-# until game.game_won || game.game_over
-#   print "Enter the letter you'd like to guess: "
-#   letter = gets.chomp.downcase
-#   game.guess_letter(letter)
-#   # p game.guess_count
-#   # p game.guesses_left
-# end
+ # p game
 
-# # p game
-
-# if game.game_won
-#   puts "Congratulations! You won in only #{game.guess_count } guesses!"
-# else
-#   puts "Wow... Great job losing."
-#   puts "You made #{game.guess_count} guesses and you still couldn't guess my word"
-# end
+if game.game_won
+  puts "Congratulations! You won in only #{game.guess_count } guesses!"
+else
+  puts "Wow... Great job losing."
+  puts "You made #{game.guess_count} guesses and you still couldn't guess my word"
+end
 
 #DRIVER CODE
 
