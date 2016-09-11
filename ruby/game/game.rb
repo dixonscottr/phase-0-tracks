@@ -1,6 +1,13 @@
 #Pseudocode
 #
-# Ask for and store the word to guess
+# Ask the user if they want to play a 1 player or 2 player game
+# IF user says 2 players
+  # Ask other play to input a word to guess
+  # Store that word
+  # Clear the terminal screen
+# IF the user says 1 player
+  # Generate a random word
+  # Store that word
 # Create a value that shows how the player has guessed, replacing the letters with underscores
 # Create a value to show the number the player has guessed with the initial value being the number of letters in the word to guess
 # Create a list to store the letters a player has guessed
@@ -73,6 +80,11 @@
       # Change string to array and loop through it checking for the letter, store the indexes in the above list
       # Loop through the list of indexes and updated the guessed word with each index (|x| guessed_word[x] = letter)
   # output: guessed word
+#
+# random_word
+  # input: no input
+  # From an array of words, choose a random word
+  # output: one word
 
 # Variables needed
 # 
@@ -83,9 +95,9 @@
 # game_over
 # guessed_letters
 
-#Class declaration
-
 require_relative 'random_word'
+
+#CLASS DECLARATION
 
 class MatchingGame
   
@@ -167,8 +179,6 @@ class MatchingGame
   end
 
   include RandomWord
-
-
 
 end
 
