@@ -173,6 +173,7 @@ class MatchingGame
   if @guessed_word == @mystery_word
     @game_won = true
   end
+  #add an extra line to make output easier to read
   puts " "
   
     @guessed_word
@@ -196,6 +197,7 @@ if answer == "y" || answer == "yes"
   puts "Player One, put in the word for Player Two to guess"
   word = gets.chomp
   game.create_mystery_word(word)
+  #clears the terminal screen so the other player won't see the word being inputted
   system('clear')
 else
   puts "Then I will make select a word for you to guess"
