@@ -24,7 +24,8 @@ function findLongestWord(array) {
     //change switched to false in case no numbers need to be switched
     switched = false;
     for (i = 0; i < (array.length - 1); i++) {
-      if (array[i].length > array[i + 1].length) {
+      //check words with spaces removed
+      if (array[i].replace(/ /g, "").length > array[i + 1].replace(/ /g, "").length) {
         var temp = array[i];
         array[i] = array[i + 1];
         array[i + 1] = temp;
@@ -41,3 +42,5 @@ function findLongestWord(array) {
 
 var words = ["abracadabra", "noshebetterdont", "greatness", "magical", "boat", "garden", "beach", "a", "marlin", "log", "beaver"];
 console.log(findLongestWord(words));
+var wordsWithSpaces = ["hello", "hi there", "hi i am bob", "t t t t t t t", "a"]; //should be 'hi i am bob'
+console.log(findLongestWord(wordsWithSpaces));
