@@ -10,11 +10,16 @@ require_relative 'state_data'
 
 class VirusPredictor
 
+# Initializing each instance of the class with data that will be used as instance variables
+# The data is passed in as parameters when it's initialized
+
   def initialize(state_of_origin, population_density, population)
     @state = state_of_origin
     @population = population
     @population_density = population_density
   end
+
+  # Calls the predicted_deaths and speed_of_spread methods at one time
 
   def virus_effects
     predicted_deaths(@population_density, @population, @state)
@@ -22,6 +27,10 @@ class VirusPredictor
   end
 
   private
+
+# It takes population_density and population as variables and calculates the number of 
+# deaths based on how dense the population and the population multiplied by some factor
+# and then prints out the results to the console
 
   def predicted_deaths(population_density, population, state)
     # predicted deaths is solely based on population density
@@ -40,6 +49,9 @@ class VirusPredictor
     print "#{@state} will lose #{number_of_deaths} people in this outbreak"
 
   end
+
+  # Based on how dense the population is, it sets a speed variable and then
+  # prints it out to console
 
   def speed_of_spread(population_density, state) #in months
     # We are still perfecting our formula here. The speed is also affected
