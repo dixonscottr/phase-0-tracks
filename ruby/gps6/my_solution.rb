@@ -1,7 +1,7 @@
 # Virus Predictor
 
-# I worked on this challenge [by myself, with: ].
-# We spent [#] hours on this challenge.
+# I worked on this challenge with with: Jason Buss.
+# We spent a little more than an hour on this challenge.
 
 # EXPLANATION OF require_relative
 # Linking to a file and allows the current file access to the data in the linked file
@@ -106,3 +106,31 @@ end
 
 #=======================================================================
 # Reflection Section
+#
+# ** What are the differences between the two different hash syntaxes shown in the state_data file?
+#
+# The 'outer' hash uses strings as key names while the 'inner' hash uses symbols as the key names.
+# Since the virus predictor program prints out the key names, it's more useful to use a string
+# in that case.
+#
+# ** What does require_relative do? How is it different from require?
+#
+# 'require_relative' loads another Ruby file into the program so that you can access the program data
+# inside that file. it's different from 'relative' because it uses a relative path, whereas
+# 'require' uses the absolute path to the file
+#
+# What are some ways to iterate through a hash?
+#
+# There are several methods, such as #each which goes through each key/value pair, #keep_if which goes
+# through each k/v pair and keeps it if it matches a condition, #delete_if which goes through each k/v
+# paid and deletes it if it matches the condition you set
+#
+# When refactoring virus_effects, what stood out to you about the variables, if anything?
+#
+# Since we were using instance variables, there was no need to actually pass in those local variables
+# since instance variables are accessible anywhere in the class definition
+#
+# What concept did you most solidify in this challenge?
+#
+# The idea of scope and how depending on the scope of a variable, you can refactor your code
+# to make it more understandable
