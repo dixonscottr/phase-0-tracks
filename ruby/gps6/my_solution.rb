@@ -4,8 +4,8 @@
 # We spent [#] hours on this challenge.
 
 # EXPLANATION OF require_relative
-#
-#
+# Linking to a file and allows the current file access to the data in the linked file
+# It's different from require because it's using a relative path rather than absolute
 require_relative 'state_data'
 
 class VirusPredictor
