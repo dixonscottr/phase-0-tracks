@@ -44,3 +44,18 @@ var words = ["abracadabra", "noshebetterdont", "greatness", "magical", "boat", "
 console.log(findLongestWord(words));
 var wordsWithSpaces = ["hello", "hi there", "hi i am bob", "t t t t t t t", "a"]; //should be 'hi i am bob'
 console.log(findLongestWord(wordsWithSpaces));
+
+//write a function that takes two objects and checks to see if the objects share at least one key-value pair.
+//
+//
+// Accept an object as input
+//   Create a value to track if there is a match and set it to false
+// For each pair in the object: 
+//   Create a counter
+//   For each pair in the object:
+//       Start at the beginning of the object
+//       IF the first key matches and its value matches
+//         Add one to the counter
+//   IF the counter is more than 1 (since it will count itself):
+//     Set the tracking value to true
+// Return the tracking value
