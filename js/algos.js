@@ -53,10 +53,14 @@ function randomWords(number) {
   var listOfRandomWords = [];
 
   while (counter > 0) {
-    num_letters = (Math.floor(Math.random() * 10) + 1)
+    // variable to have random # of letters from 1 to 10
+    num_letters = (Math.floor(Math.random() * 10) + 1);
     word = "";
+    // loops as many times as there are letters
     for (i = 0; i <= num_letters; i++) {
+      // creates a random number from 0 to 25
       alpha_idx = Math.floor(Math.random() * 26);
+      // uses that variable to find a letter in the alphabet array and adds it to the word
       word += (alphabet[alpha_idx]);
     }
     listOfRandomWords.push(word);
@@ -88,6 +92,15 @@ console.log(hasMatchingPair(person_a, person_b));
 console.log(randomWords(3));
 console.log(randomWords(1));
 console.log(randomWords(10));
+
+for (j = 0; j < 10; j++) {
+  // variable to have a random # of words from 1 to 10
+  var num_words = (Math.floor(Math.random() * 10) + 1)
+  // use the variable to have a random # of words in the outputted arrays
+  var array = randomWords(num_words);
+  console.log(array);
+  console.log("The longest word is: " + findLongestWord(array));
+}
 
 // --------------------
 // Pseudo code
