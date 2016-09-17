@@ -1,4 +1,4 @@
-// function that finds the longest word in an array
+// 1. function that finds the longest word in an array
 
 function findLongestWord(array) {
   
@@ -25,7 +25,7 @@ function findLongestWord(array) {
 
 }
 
-// Function that finds out if 2 objects have a matching key-pair value
+// 2. function that finds out if 2 objects have a matching key-pair value
 
 function hasMatchingPair(object_a, object_b) {
 
@@ -44,6 +44,8 @@ function hasMatchingPair(object_a, object_b) {
   return hasMatch;
 
 }
+
+// function to generate a certain number of random words
 
 // --------------------
 // Driver Code
@@ -83,8 +85,7 @@ console.log(hasMatchingPair(person_a, person_b));
 //   Repeat until no words need to be switched
 // Return the last item in the sorted list
 
-//write a function that takes two objects and checks to see if the objects share at least one key-value pair.
-//
+//Instructions: write a function that takes two objects and checks to see if the objects share at least one key-value pair.
 //
 // Accept two objects as input
 // Create a value to track if there is a match and set it to false
@@ -99,3 +100,21 @@ console.log(hasMatchingPair(person_a, person_b));
 //   IF there isn't:
 //     Do nothing 
 // Return the match value
+
+// Instructions: Write a function that takes an integer for length, and builds and returns an array of strings of the given length
+//
+// Accept a number x (for the number of words)
+// Store the number as the counter
+// Store the alphabet in a list
+// Create an empty list to hold the words
+// While the counter is more than 0:
+//   Generate and store a random number from 1 - 10 to be the length of the word
+//   Create an empty word to hold the letters
+//   While that counter is more than 0:
+//     Generate and store a random number from 1 - 26
+//     Use the 1-26 number to access the respective letter in the alphabet
+//     Add that letter to the word
+//     Decrease the counter by 1
+//   Add that word to the list
+//   Decrease the overall counter by 1
+// Return a list with x number of words
