@@ -1,19 +1,4 @@
-// Pseudo code
-// 
-// Instructions: write a function that takes an array of words or phrases and returns the longest word or phrase in the array
-//
-// Accept a list of words/phrases as input
-// Sort the items by length:
-//     Start at the first item and second item
-//     Compare the number of letters
-//     Create a value to track whether or not words have been switched and set it to true
-//     IF the first word has more letters than the second:
-//       Switch the first and second words around
-//       Change the words switched value to true
-//     Increase the counter by one, moving to the next pair of items in the list
-//     Repeat until the end of the list
-//   Repeat until no words need to be switched
-// Return the last item in the sorted list
+// function that finds the longest word in an array
 
 function findLongestWord(array) {
   
@@ -40,10 +25,63 @@ function findLongestWord(array) {
 
 }
 
+// Function that finds out if 2 objects have a matching key-pair value
+
+function hasMatchingPair(object_a, object_b) {
+
+  var hasMatch = false;
+  // loops through all of the keys in object_a, checks if object_b has it
+  for (var key in object_a) {
+    if (object_b.hasOwnProperty(key)) {
+        // if the objects have the same key, check if they have the same value there
+        if (object_a[key] == object_b[key]) {
+          // change the hasMatch value to true only is they have the same k/v pair
+          hasMatch = true;
+        }
+    }
+}
+
+  return hasMatch;
+
+}
+
+// --------------------
+// Driver Code
+// --------------------
+
 var words = ["abracadabra", "noshebetterdont", "greatness", "magical", "boat", "garden", "beach", "a", "marlin", "log", "beaver"];
 console.log(findLongestWord(words));
 var wordsWithSpaces = ["hello", "hi there", "hi i am bob", "t t t t t t t", "a"]; //should be 'hi i am bob'
 console.log(findLongestWord(wordsWithSpaces));
+
+
+var dogs_a = {fido: 'red', spot: 'blue'};
+var dogs_b = {fido: 'pink', fred: 'purple', jerry: 'green'};
+var cats_a = {fuzzy: 'pink', janet: 'green', jack: 'teal', biggles: 'green'};
+var cats_b = {fuzzy: 'purple', jack: 'blue', janet: 'green'};
+var person_a = {name: "Steven", age: 54};
+var person_b = {name: "Tamir", age: 54};
+console.log(hasMatchingPair(dogs_a, dogs_b));
+console.log(hasMatchingPair(cats_a, cats_b));
+console.log(hasMatchingPair(person_a, person_b));
+
+// --------------------
+// Pseudo code
+// --------------------
+// Instructions: write a function that takes an array of words or phrases and returns the longest word or phrase in the array
+//
+// Accept a list of words/phrases as input
+// Sort the items by length:
+//     Start at the first item and second item
+//     Compare the number of letters
+//     Create a value to track whether or not words have been switched and set it to true
+//     IF the first word has more letters than the second:
+//       Switch the first and second words around
+//       Change the words switched value to true
+//     Increase the counter by one, moving to the next pair of items in the list
+//     Repeat until the end of the list
+//   Repeat until no words need to be switched
+// Return the last item in the sorted list
 
 //write a function that takes two objects and checks to see if the objects share at least one key-value pair.
 //
@@ -61,32 +99,3 @@ console.log(findLongestWord(wordsWithSpaces));
 //   IF there isn't:
 //     Do nothing 
 // Return the match value
-
-var dogs_a = {fido: 'red', spot: 'blue'};
-var dogs_b = {fido: 'pink', fred: 'purple', jerry: 'green'};
-var cats_a = {fuzzy: 'pink', janet: 'green', jack: 'teal', biggles: 'green'};
-var cats_b = {fuzzy: 'purple', jack: 'blue', janet: 'green'};
-var person_a = {name: "Steven", age: 54};
-var person_b = {name: "Tamir", age: 54};
-
-function hasMatchingPair(object_a, object_b) {
-
-  var hasMatch = false;
-  var a_keys = Object.keys(object_a);
-  var b_keys = Object.keys(object_b);
-
-  for (var property in object_a) {
-    if (object_b.hasOwnProperty(property)) {
-        if (object_a[property] == object_b[property]) {
-          hasMatch = true;
-        }
-    }
-}
-
-  return hasMatch;
-
-}
-
-console.log(hasMatchingPair(dogs_a, dogs_b));
-console.log(hasMatchingPair(cats_a, cats_b));
-console.log(hasMatchingPair(person_a, person_b));
