@@ -47,6 +47,24 @@ function hasMatchingPair(object_a, object_b) {
 
 // function to generate a certain number of random words
 
+function randomWords(number) {
+  var counter = number;
+  var alphabet = "abcdefghijklmnopqrstuvwxyz";
+  var listOfRandomWords = [];
+
+  while (counter > 0) {
+    num_letters = (Math.floor(Math.random() * 10) + 1)
+    word = "";
+    for (i = 0; i <= num_letters; i++) {
+      alpha_idx = Math.floor(Math.random() * 26);
+      word += (alphabet[alpha_idx]);
+    }
+    listOfRandomWords.push(word);
+    counter --;
+  }
+  return listOfRandomWords;
+}
+
 // --------------------
 // Driver Code
 // --------------------
@@ -66,6 +84,10 @@ var person_b = {name: "Tamir", age: 54};
 console.log(hasMatchingPair(dogs_a, dogs_b));
 console.log(hasMatchingPair(cats_a, cats_b));
 console.log(hasMatchingPair(person_a, person_b));
+
+console.log(randomWords(3));
+console.log(randomWords(1));
+console.log(randomWords(10));
 
 // --------------------
 // Pseudo code
