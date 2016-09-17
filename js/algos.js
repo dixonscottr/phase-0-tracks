@@ -61,3 +61,32 @@ console.log(findLongestWord(wordsWithSpaces));
 //   IF there isn't:
 //     Do nothing 
 // Return the match value
+
+var dogs_a = {fido: 'red', spot: 'blue'};
+var dogs_b = {fido: 'pink', fred: 'purple', jerry: 'green'};
+var cats_a = {fuzzy: 'pink', janet: 'green', jack: 'teal', biggles: 'green'};
+var cats_b = {fuzzy: 'purple', jack: 'blue', janet: 'green'};
+var person_a = {name: "Steven", age: 54};
+var person_b = {name: "Tamir", age: 54};
+
+function hasMatchingPair(object_a, object_b) {
+
+  var hasMatch = false;
+  var a_keys = Object.keys(object_a);
+  var b_keys = Object.keys(object_b);
+
+  for (var property in object_a) {
+    if (object_b.hasOwnProperty(property)) {
+        if (object_a[property] == object_b[property]) {
+          hasMatch = true;
+        }
+    }
+}
+
+  return hasMatch;
+
+}
+
+console.log(hasMatchingPair(dogs_a, dogs_b));
+console.log(hasMatchingPair(cats_a, cats_b));
+console.log(hasMatchingPair(person_a, person_b));
