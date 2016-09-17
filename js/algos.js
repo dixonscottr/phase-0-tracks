@@ -48,14 +48,16 @@ console.log(findLongestWord(wordsWithSpaces));
 //write a function that takes two objects and checks to see if the objects share at least one key-value pair.
 //
 //
-// Accept an object as input
-//   Create a value to track if there is a match and set it to false
-// For each pair in the object: 
-//   Create a counter
-//   For each pair in the object:
-//       Start at the beginning of the object
-//       IF the first key matches and its value matches
-//         Add one to the counter
-//   IF the counter is more than 1 (since it will count itself):
-//     Set the tracking value to true
-// Return the tracking value
+// Accept two objects as input
+// Create a value to track if there is a match and set it to false
+// For each key in the first object:
+//   Check if there is a key in the second object with the same name
+//   IF there is:
+//     Check if its value is the same
+//     IF it is:
+//       Change the match value to true
+//     IF it isn't:
+//       Do nothing
+//   IF there isn't:
+//     Do nothing 
+// Return the match value
