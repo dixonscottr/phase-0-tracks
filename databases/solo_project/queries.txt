@@ -79,3 +79,38 @@ SELECT * FROM talk_shows;
 10|Face the Nation|John Dickerson|1954-11-07|true|3
 11|Al Punto|Jorge Ramos|2007-09-09|true|3
 
+RELEASE 3: Research on your own
+
+SELECT *
+   FROM talk_shows
+   LEFT JOIN talk_show_genres
+   ON talk_shows.genre_id = talk_show_genres.id;
+
+1|The RuPaul Show|RuPaul Charles|1996-10-12|false|1|1|Daytime
+2|Watch What Happens Live|Andy Cohen|2009-07-16|true|2|2|Late Night
+3|Chelsea Lately|Chelsea Handler|2007-07-16|false|2|2|Late Night
+4|Politically Incorrect|Bill Mahr|1993-07-25|false|2|2|Late Night
+6|The Joan Rivers Show|Joan Rivers|1989-09-05|false|1|1|Daytime
+7|The Wendy Williams Show|Wendy Williams|2008-07-14|true|1|1|Daytime
+8|Montel|Montel Williams|1991-09-30|false|1|1|Daytime
+9|Meet The Press|Chuck Todd|1947-11-06|true|3|3|Sunday Morning
+10|Face the Nation|John Dickerson|1954-11-07|true|3|3|Sunday Morning
+11|Al Punto|Jorge Ramos|2007-09-09|true|3|3|Sunday Morning
+
+(added a talk show without a genre)
+
+SELECT talk_shows.title, talk_show_genres.genre
+  FROM talk_shows
+  CROSS JOIN talk_show_genres
+  ON talk_shows.genre_id = talk_show_genres.id;
+
+The RuPaul Show|Daytime
+Watch What Happens Live|Late Night
+Chelsea Lately|Late Night
+Politically Incorrect|Late Night
+The Joan Rivers Show|Daytime
+The Wendy Williams Show|Daytime
+Montel|Daytime
+Meet The Press|Sunday Morning
+Face the Nation|Sunday Morning
+Al Punto|Sunday Morning
