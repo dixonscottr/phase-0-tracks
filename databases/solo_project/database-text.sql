@@ -12,3 +12,10 @@ CREATE TABLE talk_show_genres (
   id INTEGER PRIMARY KEY,
   genre VARCHAR(255)
   );
+
+INSERT INTO talk_show_genres (genre) VALUES ("Daytime");
+INSERT INTO talk_show_genres (genre) VALUES ("Late Night");
+INSERT INTO talk_show_genres (genre) VALUES ("Sunday Morning");
+
+
+
