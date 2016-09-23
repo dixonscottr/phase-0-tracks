@@ -1,0 +1,36 @@
+==> You've joined two tables before. How do you join three?
+
+SELECT * FROM users, businesses JOIN reviews ON reviews.business_id = businesses.id AND reviews.user_id = users.id; 
+
+PK user | first | last | PK biz_id | biz name | PK review | # stars | comment | biz_id | user_id  
+
+1|Bradford|Pitt|7|JoeBob's Sportz Barn|1|2|Spaghetti was gr8|7|1
+2|Mandy|Kaling|5|Plumbing by Janet|2|1|not a great outfit|5|2
+3|Angela|Jolie|5|Plumbing by Janet|3|5|love that top!|5|3
+7|Denzel|George|4|Lotus Yoga|4|2|why would you play metallica during cooldown?|4|7
+6|Merryl|Streepman|4|Lotus Yoga|5|4|love lars ulrich during tree pose!! rock on!|4|6
+1|Bradford|Pitt|6|Sushi World|6|5|too much tuna... and i like it|6|1
+
+==> There are some repetitive columns if we choose to view all fields. Choose instead to just view the user's names, the business name, the star rating, and the comment.
+
+SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment 
+ FROM users, businesses 
+ JOIN reviews ON reviews.business_id = businesses.id AND reviews.user_id = users.id;
+
+Bradford|Pitt|JoeBob's Sportz Barn|2|Spaghetti was gr8
+Mandy|Kaling|Plumbing by Janet|1|not a great outfit
+Angela|Jolie|Plumbing by Janet|5|love that top!
+Denzel|George|Lotus Yoga|2|why would you play metallica during cooldown?
+Merryl|Streepman|Lotus Yoga|4|love lars ulrich during tree pose!! rock on!
+Bradford|Pitt|Sushi World|5|too much tuna... and i like it
+
+==> How do you view the data of all three tables for just one particular business? 
+SELECT * FROM users, businesses 
+ JOIN reviews ON reviews.business_id = businesses.id AND reviews.user_id = users.id 
+ WHERE businesses.id=5;
+
+2|Mandy|Kaling|5|Plumbing by Janet|2|1|not a great outfit|5|2
+3|Angela|Jolie|5|Plumbing by Janet|3|5|love that top!|5|3
+
+==> Release 3:
+Connect chefs to the tv shows that they are on, and then connect that to the network. 
