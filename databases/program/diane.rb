@@ -45,18 +45,18 @@ SQL
 db.execute(create_category_table)
 # #create idea table with 5 lists: category, description, time required (in minutes), done status, cost (0 to 5)
 
-# create_ideas_table = <<-SQL
-#   CREATE TABLE IF NOT EXISTS ideas(
-#     id INTEGER PRIMARY KEY,
-#     category_id INTEGER,
-#     description VARCHAR(255),
-#     time_required INTEGER,
-#     done_status BOOLEAN,
-#     COST INTEGER,
-#     FOREIGN KEY category_id REFERENCES categories(id)
-#   )
-# SQL
-# db.execute(create_ideas_table)
+create_ideas_table = <<-SQL
+  CREATE TABLE IF NOT EXISTS ideas(
+    id INTEGER PRIMARY KEY,
+    category_id INTEGER,
+    description VARCHAR(255),
+    time_required INTEGER,
+    done_status BOOLEAN,
+    COST INTEGER,
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+  )
+SQL
+db.execute(create_ideas_table)
 
 # #create done events with 5 lists: date, category, description, time taken, cost
 
