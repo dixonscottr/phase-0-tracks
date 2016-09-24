@@ -60,14 +60,14 @@ db.execute(create_ideas_table)
 
 # #create done events with 5 lists: date, category, description, time taken, cost
 
-# create_done_table = <<-SQL
-#   CREATE TABLE IF NOT EXISTS done(
-#     id INTEGER PRIMARY KEY,
-#     category_id INTEGER,
-#     description VARCHAR(255),
-#     time_taken INTEGER,
-#     COST INTEGER,
-#     FOREIGN KEY category_id REFERENCES categories(id)
-#   )
-# SQL
-# db.execute(create_done_table)
+create_done_table = <<-SQL
+  CREATE TABLE IF NOT EXISTS done(
+    id INTEGER PRIMARY KEY,
+    category_id INTEGER,
+    description VARCHAR(255),
+    time_taken INTEGER,
+    COST INTEGER,
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+  )
+SQL
+db.execute(create_done_table)
