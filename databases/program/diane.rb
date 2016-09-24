@@ -51,8 +51,8 @@ create_ideas_table = <<-SQL
     category_id INTEGER,
     description VARCHAR(255),
     time_required INTEGER,
+    cost INTEGER,
     done_status BOOLEAN,
-    COST INTEGER,
     FOREIGN KEY (category_id) REFERENCES categories(id)
   )
 SQL
@@ -66,8 +66,24 @@ create_done_table = <<-SQL
     category_id INTEGER,
     description VARCHAR(255),
     time_taken INTEGER,
-    COST INTEGER,
+    cost INTEGER,
     FOREIGN KEY (category_id) REFERENCES categories(id)
   )
 SQL
 db.execute(create_done_table)
+
+# method to add an idea to ideas database
+# accepts 5 arguments: category, description, time required (in minutes), done status, cost (0 to 5)
+def add_idea(db, category, description, time_required, cost, done = "false")
+  add_data_to_ideas = <<-SQL
+    INSERT INTO ideas (category_id, description, time_required, cost, done_status)
+      VALUES (?,?,?,?,?)
+  SQL
+  db.execute(add_data_to_ideas, [category, description, time_required, done, done])
+end
+
+# add_idea(db, 1, "talk to a shoe", 5, 0, "true")
+# add_idea(db, 2, "buy a pelt", 10, 5, "false")
+
+
+
