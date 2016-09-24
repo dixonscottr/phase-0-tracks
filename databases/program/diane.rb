@@ -75,8 +75,19 @@ db.execute(create_done_table)
 
 # method to add a category to categories database
 # accepts 1 argument: name
+
 def add_category(db, category_name)
   db.execute("INSERT INTO categories (name) VALUES (?)", [category_name])
+end
+
+# method to check if a category already exists
+
+def has_category(db, category_name)
+  simple_categories = []
+  db.execute("SELECT name FROM categories").each do |category|
+    simple_categories << category['name']
+  end
+  simple_categories.include?(category_name) ? true : false
 end
 
 # method to add an idea to ideas database
@@ -164,3 +175,6 @@ print_done_list(db)
 p convert_category_to_id(db, "shopping")
 p convert_category_to_id(db, "friends")
 p convert_category_to_id(db, "media")
+
+p has_category(db, "shopping")
+p has_category(db, "friends")
