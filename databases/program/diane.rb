@@ -184,6 +184,19 @@ def print_according_to_cost(db, cost_max)
   end
 end
 
+# method to print out according to time
+
+def print_according_to_time(db, max_minutes)
+  ideas = db.execute("SELECT * FROM ideas WHERE time_required<='#{max_minutes}'")
+  ideas.each do |ideas|
+    puts "Category: " + convert_id_to_category(db, ideas['category_id']).capitalize
+    puts "Description: #{ideas['description']}"
+    puts "Time required: #{ideas['time_required']} minutes"
+    puts "Cost: " + make_dollar_signs(ideas['cost'])
+    puts "---"
+  end
+end
+
 # method that finds the id # corresponding to category
 # accepts a category as a name
 # finds the category in the categories table
@@ -238,11 +251,11 @@ add_category(db, "pamper")
 
 add_idea(db, 1, "talk to a shoe", 5, 0, "false")
 add_idea(db, 2, "buy a pelt", 10, 3, "false")
-add_idea(db, 2, "buy something fancy", 10, 5, "true")
-add_idea(db, 2, "buy a sweet coat", 10, 4, "true")
-add_idea(db, 2, "sing a song badly", 10, 3, "true")
-add_idea(db, 2, "walk in the park", 10, 2, "false")
-add_idea(db, 2, "eat ice cream", 10, 1, "false")
+add_idea(db, 5, "buy something fancy", 50, 5, "true")
+add_idea(db, 2, "buy a sweet coat", 40, 4, "true")
+add_idea(db, 3, "sing a song badly", 13, 3, "true")
+add_idea(db, 4, "walk in the park", 20, 2, "false")
+add_idea(db, 2, "eat ice cream", 35, 1, "false")
 
 log_event(db, '9/24/2016', 2, "talk to the queen", 15, 2)
 log_event(db, '09/07/2016', 1, "buy a pelt", 10, 5)
@@ -285,5 +298,10 @@ p convert_id_to_category(db, 3)
 
 puts "print out list under 5 cost"
 print_according_to_cost(db, 5)
+puts "under 3 cost"
 print_according_to_cost(db, 3)
 
+puts "under 30 minutes"
+print_according_to_time(db, 30)
+puts "under 10 minutes"
+print_according_to_time(db, 10)
