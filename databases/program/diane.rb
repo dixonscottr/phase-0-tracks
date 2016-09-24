@@ -140,7 +140,7 @@ def print_ideas(db)
     puts "Category: #{ideas['category_id']}"
     puts "Description: #{ideas['description']}"
     puts "Time required: #{ideas['time_required']} minutes"
-    puts "Cost: " + ("$" * ideas['cost'].to_i)
+    puts "Cost: " + make_dollar_signs(ideas['cost'])
     puts "Done? #{ideas['done_status']}"
     puts 
   end
@@ -153,7 +153,7 @@ def print_done_list(db)
     puts "Category: #{did['category_id']}"
     puts "Description: #{did['description']}"
     puts "Time taken: #{did['time_taken']} minutes"
-    puts "Cost: " + ("$" * did['cost'].to_i)
+    puts "Cost: " + make_dollar_signs(did['cost'])
     puts
   end
 end
