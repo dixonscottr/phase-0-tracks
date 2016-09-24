@@ -111,6 +111,18 @@ def log_event(db, date, category, description, time_taken, cost)
   db.execute(log_event_to_done, [date, category, description, time_taken, cost])
 end
 
+# method to see if an idea exists
+# accepts database and description as input
+# outputs true or false
+
+def has_idea(db, description)
+  descriptions = []
+  db.execute("SELECT description FROM ideas").each do |idea|
+    descriptions << idea['description'].downcase
+  end
+  descriptions.include?(description) ? true : false
+end
+
 def print_ideas(db)
   ideas = db.execute("SELECT * FROM ideas")
   ideas.each do |ideas|
@@ -178,3 +190,6 @@ p convert_category_to_id(db, "media")
 
 p has_category(db, "shopping")
 p has_category(db, "friends")
+
+p has_idea(db, "buy a pelt")
+p has_idea(db, "buy a coat")
