@@ -197,6 +197,17 @@ def print_according_to_time(db, max_minutes)
   end
 end
 
+def print_ideas_by_category(db, category)
+  c_id = convert_category_to_id(db, category)
+  ideas = db.execute("SELECT * FROM ideas WHERE category_id<='#{c_id}'")
+  ideas.each do |ideas|
+    puts "Description: #{ideas['description']}"
+    puts "Time required: #{ideas['time_required']} minutes"
+    puts "Cost: " + make_dollar_signs(ideas['cost'])
+    puts "---"
+  end
+end
+
 # method that finds the id # corresponding to category
 # accepts a category as a name
 # finds the category in the categories table
@@ -305,3 +316,8 @@ puts "under 30 minutes"
 print_according_to_time(db, 30)
 puts "under 10 minutes"
 print_according_to_time(db, 10)
+
+puts "all shopping"
+print_ideas_by_category(db, "shopping")
+puts "food/drink"
+print_ideas_by_category(db, "food/drink")
