@@ -124,6 +124,22 @@ def print_done_list(db)
   end
 end
 
+# method that finds the id # corresponding to category
+# accepts a category as a name
+# finds the category in the categories table
+# outputs the id # of that category
+
+def convert_category_to_id (db, category_name)
+  categories = db.execute("SELECT id, name FROM categories")
+  id_num = false
+  categories.each do |category|
+    if category['name'] == category_name
+      id_num = category['id']
+    end
+  end
+  id_num
+end
+
 
 
 #################
@@ -145,3 +161,6 @@ log_event(db, '09/07/2016', 1, "buy a pelt", 10, 5)
 
 print_ideas(db)
 print_done_list(db)
+p convert_category_to_id(db, "shopping")
+p convert_category_to_id(db, "friends")
+p convert_category_to_id(db, "media")
