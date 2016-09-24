@@ -127,6 +127,12 @@ def make_dollar_signs(num)
   num > 0 ? ("$" * num) : "0"
 end
 
+def print_categories(db)
+  puts "Existing categories:"
+  db.execute("SELECT name FROM categories").each do |category|
+    puts "* " + category['name'].capitalize
+  end
+end
 
 def print_ideas(db)
   ideas = db.execute("SELECT * FROM ideas")
@@ -215,6 +221,7 @@ p has_description(db, "talk to the queen", "done")
 p make_dollar_signs(0)
 p make_dollar_signs(5)
 
+print_categories(db)
 
 # JOINS: 
 # SELECT done.date_done, categories.name, done.description, done.time_taken, done.cost
