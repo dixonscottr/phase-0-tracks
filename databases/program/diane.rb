@@ -72,6 +72,19 @@ create_done_table = <<-SQL
 SQL
 db.execute(create_done_table)
 
+# method to add a category to categories database
+# accepts 1 argument: name
+def add_category(db, category_name)
+  db.execute("INSERT INTO categories (name) VALUES (?)", [category_name])
+end
+
+# add_category(db, "shopping")
+# add_category(db, "food/drink")
+# add_category(db, "media")
+# add_category(db, "social")
+# add_category(db, "relaxation")
+# add_category(db, "pamper")
+
 # method to add an idea to ideas database
 # accepts 5 arguments: category, description, time required (in minutes), done status, cost (0 to 5)
 def add_idea(db, category, description, time_required, cost, done = "false")
