@@ -142,7 +142,7 @@ def print_ideas(db)
     puts "Time required: #{ideas['time_required']} minutes"
     puts "Cost: " + make_dollar_signs(ideas['cost'])
     puts "Done? #{ideas['done_status']}"
-    puts 
+    puts "---"
   end
 end
 
@@ -154,7 +154,7 @@ def print_done_list(db)
     puts "Description: #{did['description']}"
     puts "Time taken: #{did['time_taken']} minutes"
     puts "Cost: " + make_dollar_signs(did['cost'])
-    puts
+    puts "---"
   end
 end
 
