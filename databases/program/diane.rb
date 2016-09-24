@@ -222,8 +222,10 @@ p convert_category_to_id(db, "shopping")
 p convert_category_to_id(db, "friends")
 p convert_category_to_id(db, "media")
 
+puts "has_category check"
 p has_category(db, "shopping")
 p has_category(db, "friends")
+puts "..."
 
 p has_description(db, "buy a pelt", "ideas")
 p has_description(db, "buy a coat", "ideas")
