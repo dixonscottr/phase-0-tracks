@@ -29,6 +29,7 @@
   # Print out the logged events table neatly
 
 require 'sqlite3'
+require 'faker'
 
 db = SQLite3::Database.new("diane.db")
 db.results_as_hash = true
@@ -163,6 +164,17 @@ def convert_category_to_id (db, category_name)
   id_num
 end
 
+def convert_id_to_category(db, id)
+  categories = db.execute("SELECT * FROM categories")
+  real_name = false
+  categories.each do |category|
+    if category['id'] == id
+      real_name = category['name']
+    end
+  end
+  real_name
+end
+
 
 
 #################
@@ -193,3 +205,11 @@ p has_category(db, "friends")
 
 p has_idea(db, "buy a pelt")
 p has_idea(db, "buy a coat")
+
+# JOINS: 
+# SELECT done.date_done, categories.name, done.description, done.time_taken, done.cost
+# FROM done
+# JOIN categories ON done.category_id = categories.id;
+
+p convert_id_to_category(db, 2)
+p convert_id_to_category(db, 3)
