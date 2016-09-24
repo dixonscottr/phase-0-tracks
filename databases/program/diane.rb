@@ -123,6 +123,9 @@ def log_event(db, date, category, description, time_taken, cost)
   db.execute(log_event_to_done, [date, category, description, time_taken, cost])
 end
 
+def make_dollar_signs(num)
+  num > 0 ? ("$" * num) : "0"
+end
 
 
 def print_ideas(db)
@@ -208,6 +211,10 @@ p has_description(db, "buy a pelt", "ideas")
 p has_description(db, "buy a coat", "ideas")
 p has_description(db, "buy a coat", "done")
 p has_description(db, "talk to the queen", "done")
+
+p make_dollar_signs(0)
+p make_dollar_signs(5)
+
 
 # JOINS: 
 # SELECT done.date_done, categories.name, done.description, done.time_taken, done.cost
