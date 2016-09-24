@@ -79,13 +79,6 @@ def add_category(db, category_name)
   db.execute("INSERT INTO categories (name) VALUES (?)", [category_name])
 end
 
-# add_category(db, "shopping")
-# add_category(db, "food/drink")
-# add_category(db, "media")
-# add_category(db, "social")
-# add_category(db, "relaxation")
-# add_category(db, "pamper")
-
 # method to add an idea to ideas database
 # accepts 5 arguments: category, description, time required (in minutes), done status, cost (0 to 5)
 def add_idea(db, category, description, time_required, cost, done = "false")
@@ -95,9 +88,6 @@ def add_idea(db, category, description, time_required, cost, done = "false")
   SQL
   db.execute(add_data_to_ideas, [category, description, time_required, done, done])
 end
-
-# add_idea(db, 1, "talk to a shoe", 5, 0, "true")
-# add_idea(db, 2, "buy a pelt", 10, 5, "false")
 
 # method to add a done event to the done database
 # accepts 6 arguments: database, date, category, description, time taken, cost
@@ -109,6 +99,22 @@ def log_event(db, date, category, description, time_taken, cost)
   SQL
   db.execute(log_event_to_done, [date, category, description, time_taken, cost])
 end
+
+
+
+#################
+## DRIVER CODE ##
+#################
+
+# add_category(db, "shopping")
+# add_category(db, "food/drink")
+# add_category(db, "media")
+# add_category(db, "social")
+# add_category(db, "relaxation")
+# add_category(db, "pamper")
+
+# add_idea(db, 1, "talk to a shoe", 5, 0, "true")
+# add_idea(db, 2, "buy a pelt", 10, 5, "false")
 
 # log_event(db, '9/24/2016', 2, "talk to the queen", 15, 2)
 # log_event(db, '09/07/2016', 1, "buy a pelt", 10, 5)
