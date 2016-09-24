@@ -34,17 +34,16 @@ db = SQLite3::Database.new("diane.db")
 db.results_as_hash = true
 
 #create category table with name list
-
 create_category_table = <<-SQL
   CREATE TABLE IF NOT EXISTS categories(
     id INTEGER PRIMARY KEY,
     name VARCHAR(255)
   )
 SQL
-
 db.execute(create_category_table)
-# #create idea table with 5 lists: category, description, time required (in minutes), done status, cost (0 to 5)
 
+
+# #create idea table with 5 lists: category, description, time required (in minutes), done status, cost (0 to 5)
 create_ideas_table = <<-SQL
   CREATE TABLE IF NOT EXISTS ideas(
     id INTEGER PRIMARY KEY,
@@ -73,12 +72,7 @@ create_done_table = <<-SQL
 SQL
 db.execute(create_done_table)
 
-# method to add a category to categories database
-# accepts 1 argument: name
-
-def add_category(db, category_name)
-  db.execute("INSERT INTO categories (name) VALUES (?)", [category_name])
-end
+# METHODS that check existing data
 
 # method to check if a category already exists
 
@@ -102,6 +96,15 @@ def has_description(db, description, table)
   descriptions.include?(description) ? true : false
 end
 
+# METHODS that add data to tables
+
+# method to add a category to categories database
+# accepts 1 argument: name
+
+def add_category(db, category_name)
+  db.execute("INSERT INTO categories (name) VALUES (?)", [category_name])
+end
+
 # method to add an idea to ideas database
 # accepts 5 arguments: category, description, time required (in minutes), done status, cost (0 to 5)
 def add_idea(db, category, description, time_required, cost, done = "false")
@@ -123,9 +126,23 @@ def log_event(db, date, category, description, time_taken, cost)
   db.execute(log_event_to_done, [date, category, description, time_taken, cost])
 end
 
-def make_dollar_signs(num)
-  num > 0 ? ("$" * num) : "0"
+# METHODS that update data in tables
+
+# change done status
+# input: database, description
+# output: none, but changes done status in db
+
+def change_to_done(db, description_to_match)
+  ideas = db.execute("SELECT description FROM ideas")
+  update_idea = "UPDATE ideas SET done_status='true' WHERE description='#{description_to_match}'"
+  ideas.each do |ideas|
+    if ideas['description'] == description_to_match
+      db.execute(update_idea)
+    end
+  end
 end
+
+# METHODS that print
 
 def print_categories(db)
   puts "Existing categories:"
@@ -208,6 +225,8 @@ def print_ideas_by_category(db, category)
   end
 end
 
+# methods that help printing
+
 # method that finds the id # corresponding to category
 # accepts a category as a name
 # finds the category in the categories table
@@ -235,89 +254,84 @@ def convert_id_to_category(db, id)
   real_name
 end
 
-# change done status
-# input: database, description
-# output: none, but changes done status in db
-
-def change_to_done(db, description_to_match)
-  ideas = db.execute("SELECT description FROM ideas")
-  update_idea = "UPDATE ideas SET done_status='true' WHERE description='#{description_to_match}'"
-  ideas.each do |ideas|
-    if ideas['description'] == description_to_match
-      db.execute(update_idea)
-    end
-  end
+def make_dollar_signs(num)
+  num > 0 ? ("$" * num) : "0"
 end
+
+####################
+## USER INTERFACE ##
+####################
+
 
 #################
 ## DRIVER CODE ##
 #################
 
-add_category(db, "shopping")
-add_category(db, "food/drink")
-add_category(db, "media")
-add_category(db, "social")
-add_category(db, "relaxation")
-add_category(db, "pamper")
+# add_category(db, "shopping")
+# add_category(db, "food/drink")
+# add_category(db, "media")
+# add_category(db, "social")
+# add_category(db, "relaxation")
+# add_category(db, "pamper")
 
-add_idea(db, 1, "talk to a shoe", 5, 0, "false")
-add_idea(db, 2, "buy a pelt", 10, 3, "false")
-add_idea(db, 5, "buy something fancy", 50, 5, "true")
-add_idea(db, 2, "buy a sweet coat", 40, 4, "true")
-add_idea(db, 3, "sing a song badly", 13, 3, "true")
-add_idea(db, 4, "walk in the park", 20, 2, "false")
-add_idea(db, 2, "eat ice cream", 35, 1, "false")
+# add_idea(db, 1, "talk to a shoe", 5, 0, "false")
+# add_idea(db, 2, "buy a pelt", 10, 3, "false")
+# add_idea(db, 5, "buy something fancy", 50, 5, "true")
+# add_idea(db, 2, "buy a sweet coat", 40, 4, "true")
+# add_idea(db, 3, "sing a song badly", 13, 3, "true")
+# add_idea(db, 4, "walk in the park", 20, 2, "false")
+# add_idea(db, 2, "eat ice cream", 35, 1, "false")
 
-log_event(db, '9/24/2016', 2, "talk to the queen", 15, 2)
-log_event(db, '09/07/2016', 1, "buy a pelt", 10, 5)
+# log_event(db, '9/24/2016', 2, "talk to the queen", 15, 2)
+# log_event(db, '09/07/2016', 1, "buy a pelt", 10, 5)
 
-print_ideas(db)
-print_done_list(db)
-p convert_category_to_id(db, "shopping")
-p convert_category_to_id(db, "friends")
-p convert_category_to_id(db, "media")
+# print_ideas(db)
+# print_done_list(db)
+# p convert_category_to_id(db, "shopping")
+# p convert_category_to_id(db, "friends")
+# p convert_category_to_id(db, "media")
 
-puts "has_category check"
-p has_category(db, "shopping")
-p has_category(db, "friends")
-puts "..."
+# puts "has_category check"
+# p has_category(db, "shopping")
+# p has_category(db, "friends")
+# puts "..."
 
-p has_description(db, "buy a pelt", "ideas")
-p has_description(db, "buy a coat", "ideas")
-p has_description(db, "buy a coat", "done")
-p has_description(db, "talk to the queen", "done")
+# p has_description(db, "buy a pelt", "ideas")
+# p has_description(db, "buy a coat", "ideas")
+# p has_description(db, "buy a coat", "done")
+# p has_description(db, "talk to the queen", "done")
 
-p make_dollar_signs(0)
-p make_dollar_signs(5)
+# p make_dollar_signs(0)
+# p make_dollar_signs(5)
 
-print_categories(db)
+# print_categories(db)
 
-change_to_done(db, "talk to a shoe")
+# change_to_done(db, "talk to a shoe")
 
-puts "not done list:"
-print_done_or_not_done_list(db, "true")
-puts "done list"
-print_done_or_not_done_list(db, "false")
+# puts "not done list:"
+# print_done_or_not_done_list(db, "true")
+# puts "done list"
+# print_done_or_not_done_list(db, "false")
 
-# JOINS: 
-# SELECT done.date_done, categories.name, done.description, done.time_taken, done.cost
-# FROM done
-# JOIN categories ON done.category_id = categories.id;
+# # JOINS: 
+# # SELECT done.date_done, categories.name, done.description, done.time_taken, done.cost
+# # FROM done
+# # JOIN categories ON done.category_id = categories.id;
 
-p convert_id_to_category(db, 2)
-p convert_id_to_category(db, 3)
+# p convert_id_to_category(db, 2)
+# p convert_id_to_category(db, 3)
 
-puts "print out list under 5 cost"
-print_according_to_cost(db, 5)
-puts "under 3 cost"
-print_according_to_cost(db, 3)
+# puts "print out list under 5 cost"
+# print_according_to_cost(db, 5)
+# puts "under 3 cost"
+# print_according_to_cost(db, 3)
 
-puts "under 30 minutes"
-print_according_to_time(db, 30)
-puts "under 10 minutes"
-print_according_to_time(db, 10)
+# puts "under 30 minutes"
+# print_according_to_time(db, 30)
+# puts "under 10 minutes"
+# print_according_to_time(db, 10)
 
-puts "all shopping"
-print_ideas_by_category(db, "shopping")
-puts "food/drink"
-print_ideas_by_category(db, "food/drink")
+# puts "all shopping"
+# print_ideas_by_category(db, "shopping")
+# puts "food/drink"
+# print_ideas_by_category(db, "food/drink")
