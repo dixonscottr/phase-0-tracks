@@ -29,7 +29,6 @@
   # Print out the logged events table neatly
 
 require 'sqlite3'
-require 'faker'
 
 db = SQLite3::Database.new("diane.db")
 db.results_as_hash = true
