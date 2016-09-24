@@ -63,6 +63,7 @@ db.execute(create_ideas_table)
 create_done_table = <<-SQL
   CREATE TABLE IF NOT EXISTS done(
     id INTEGER PRIMARY KEY,
+    date_done DATE,
     category_id INTEGER,
     description VARCHAR(255),
     time_taken INTEGER,
@@ -98,5 +99,16 @@ end
 # add_idea(db, 1, "talk to a shoe", 5, 0, "true")
 # add_idea(db, 2, "buy a pelt", 10, 5, "false")
 
+# method to add a done event to the done database
+# accepts 6 arguments: database, date, category, description, time taken, cost
 
+def log_event(db, date, category, description, time_taken, cost)
+  log_event_to_done = <<-SQL
+    INSERT INTO done (date_done, category_id, description, time_taken, cost)
+      VALUES (?, ?, ?, ?, ?)
+  SQL
+  db.execute(log_event_to_done, [date, category, description, time_taken, cost])
+end
 
+# log_event(db, '9/24/2016', 2, "talk to the queen", 15, 2)
+# log_event(db, '09/07/2016', 1, "buy a pelt", 10, 5)
