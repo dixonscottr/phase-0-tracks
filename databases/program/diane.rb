@@ -137,7 +137,7 @@ end
 def print_ideas(db)
   ideas = db.execute("SELECT * FROM ideas")
   ideas.each do |ideas|
-    puts "Category: #{ideas['category_id']}"
+    puts "Category: " + convert_id_to_category(db, ideas['category_id']).capitalize
     puts "Description: #{ideas['description']}"
     puts "Time required: #{ideas['time_required']} minutes"
     puts "Cost: " + make_dollar_signs(ideas['cost'])
@@ -150,7 +150,7 @@ def print_done_list(db)
   did = db.execute("SELECT * FROM done")
   did.each do |did|
     puts "Date: #{did['date_done']}"
-    puts "Category: #{did['category_id']}"
+    puts "Category: " + convert_id_to_category(db, did['category_id']).capitalize
     puts "Description: #{did['description']}"
     puts "Time taken: #{did['time_taken']} minutes"
     puts "Cost: " + make_dollar_signs(did['cost'])
