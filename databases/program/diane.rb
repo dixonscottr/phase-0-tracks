@@ -185,7 +185,19 @@ def convert_id_to_category(db, id)
   real_name
 end
 
+# change done status
+# input: database, description
+# output: none, but changes done status in db
 
+def change_to_done(db, description_to_match)
+  ideas = db.execute("SELECT description FROM ideas")
+  update_idea = "UPDATE ideas SET done_status='true' WHERE description='#{description_to_match}'"
+  ideas.each do |ideas|
+    if ideas['description'] == description_to_match
+      db.execute(update_idea)
+    end
+  end
+end
 
 #################
 ## DRIVER CODE ##
@@ -198,7 +210,7 @@ add_category(db, "social")
 add_category(db, "relaxation")
 add_category(db, "pamper")
 
-add_idea(db, 1, "talk to a shoe", 5, 0, "true")
+add_idea(db, 1, "talk to a shoe", 5, 0, "false")
 add_idea(db, 2, "buy a pelt", 10, 5, "false")
 
 log_event(db, '9/24/2016', 2, "talk to the queen", 15, 2)
@@ -222,6 +234,9 @@ p make_dollar_signs(0)
 p make_dollar_signs(5)
 
 print_categories(db)
+
+change_to_done(db, "talk to a shoe")
+
 
 # JOINS: 
 # SELECT done.date_done, categories.name, done.description, done.time_taken, done.cost
