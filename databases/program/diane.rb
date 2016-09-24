@@ -158,6 +158,19 @@ def print_done_list(db)
   end
 end
 
+# method to print out ideas not yet done
+
+def print_done_or_not_done_list(db, done_or_not_done)
+  ideas = db.execute("SELECT * FROM ideas WHERE done_status='#{done_or_not_done}'")
+  ideas.each do |ideas|
+    puts "Category: " + convert_id_to_category(db, ideas['category_id']).capitalize
+    puts "Description: #{ideas['description']}"
+    puts "Time required: #{ideas['time_required']} minutes"
+    puts "Cost: " + make_dollar_signs(ideas['cost'])
+    puts "---"
+  end
+end
+
 # method that finds the id # corresponding to category
 # accepts a category as a name
 # finds the category in the categories table
@@ -212,6 +225,11 @@ add_category(db, "pamper")
 
 add_idea(db, 1, "talk to a shoe", 5, 0, "false")
 add_idea(db, 2, "buy a pelt", 10, 5, "false")
+add_idea(db, 2, "buy something fancy", 10, 5, "true")
+add_idea(db, 2, "buy a sweet coat", 10, 5, "true")
+add_idea(db, 2, "sing a song badly", 10, 5, "true")
+add_idea(db, 2, "walk in the park", 10, 5, "false")
+add_idea(db, 2, "eat ice cream", 10, 5, "false")
 
 log_event(db, '9/24/2016', 2, "talk to the queen", 15, 2)
 log_event(db, '09/07/2016', 1, "buy a pelt", 10, 5)
@@ -238,6 +256,12 @@ p make_dollar_signs(5)
 print_categories(db)
 
 change_to_done(db, "talk to a shoe")
+
+puts "not done list:"
+print_done_or_not_done_list(db, "true")
+puts "done list"
+print_done_or_not_done_list(db, "false")
+
 
 
 # JOINS: 
