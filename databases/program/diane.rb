@@ -86,7 +86,7 @@ def add_idea(db, category, description, time_required, cost, done = "false")
     INSERT INTO ideas (category_id, description, time_required, cost, done_status)
       VALUES (?,?,?,?,?)
   SQL
-  db.execute(add_data_to_ideas, [category, description, time_required, done, done])
+  db.execute(add_data_to_ideas, [category, description, time_required, cost, done])
 end
 
 # method to add a done event to the done database
@@ -100,21 +100,48 @@ def log_event(db, date, category, description, time_taken, cost)
   db.execute(log_event_to_done, [date, category, description, time_taken, cost])
 end
 
+def print_ideas(db)
+  ideas = db.execute("SELECT * FROM ideas")
+  ideas.each do |ideas|
+    puts "Category: #{ideas['category_id']}"
+    puts "Description: #{ideas['description']}"
+    puts "Time required: #{ideas['time_required']} minutes"
+    puts "Cost: " + ("$" * ideas['cost'].to_i)
+    puts "Done? #{ideas['done_status']}"
+    puts 
+  end
+end
+
+def print_done_list(db)
+  did = db.execute("SELECT * FROM done")
+  did.each do |did|
+    puts "Date: #{did['date_done']}"
+    puts "Category: #{did['category_id']}"
+    puts "Description: #{did['description']}"
+    puts "Time taken: #{did['time_taken']} minutes"
+    puts "Cost: " + ("$" * did['cost'].to_i)
+    puts
+  end
+end
+
 
 
 #################
 ## DRIVER CODE ##
 #################
 
-# add_category(db, "shopping")
-# add_category(db, "food/drink")
-# add_category(db, "media")
-# add_category(db, "social")
-# add_category(db, "relaxation")
-# add_category(db, "pamper")
+add_category(db, "shopping")
+add_category(db, "food/drink")
+add_category(db, "media")
+add_category(db, "social")
+add_category(db, "relaxation")
+add_category(db, "pamper")
 
-# add_idea(db, 1, "talk to a shoe", 5, 0, "true")
-# add_idea(db, 2, "buy a pelt", 10, 5, "false")
+add_idea(db, 1, "talk to a shoe", 5, 0, "true")
+add_idea(db, 2, "buy a pelt", 10, 5, "false")
 
-# log_event(db, '9/24/2016', 2, "talk to the queen", 15, 2)
-# log_event(db, '09/07/2016', 1, "buy a pelt", 10, 5)
+log_event(db, '9/24/2016', 2, "talk to the queen", 15, 2)
+log_event(db, '09/07/2016', 1, "buy a pelt", 10, 5)
+
+print_ideas(db)
+print_done_list(db)
