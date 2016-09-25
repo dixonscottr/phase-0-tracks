@@ -287,6 +287,16 @@ def make_dollar_signs(num)
   "$" * num
 end
 
+def num_of_times_treated(db)
+  times_treated = 0
+  db.execute("SELECT description FROM done").each do |description|
+    times_treated += 1
+  end
+  
+  times_treated
+  
+end
+
 ####################
 ## USER INTERFACE ##
 ####################
@@ -337,9 +347,13 @@ until option_input.downcase == 'quit'
 
   elsif option_input == "2"
     
-    puts "Here's a list of ways you've treated yourself:"
-    print_done_list(db)
-      
+    if num_of_times_treated(db) > 0
+      puts "You've treated yourself " + num_of_times_treated(db).to_s + " times"
+      puts "Here's a list of ways you've treated yourself:"
+      print_done_list(db)
+    else
+      puts "You haven't treated yourself! Get on it!"
+    end
 
   elsif option_input == "3"
 
