@@ -268,6 +268,13 @@ add_category(db, "media")
 add_category(db, "social")
 add_category(db, "relaxation")
 add_category(db, "pamper")
+add_idea(db, 1, "talk to a shoe", 5, 0, "false")
+add_idea(db, 2, "buy a pelt", 10, 3, "false")
+add_idea(db, 5, "buy something fancy", 50, 5, "true")
+add_idea(db, 2, "buy a sweet coat", 40, 4, "true")
+add_idea(db, 3, "sing a song badly", 13, 3, "true")
+add_idea(db, 4, "walk in the park", 20, 2, "false")
+add_idea(db, 2, "eat ice cream", 35, 1, "false")
 
 puts "Welcome to Treat Your Self"
 puts "Would you like to: "
@@ -293,8 +300,36 @@ until answer.downcase == 'quit'
     puts "About how many minutes did this activity take?"
     time = gets.chomp
     log_event(db, date, category, description, time, cost)
-
   elsif answer == "2"
+
+    puts "How would you like to see the idea list?"
+    puts "1) By category"
+    puts "2) By cost"
+    puts "3) By time required"
+    puts "4) All ideas"
+    response = gets.chomp
+
+    case response
+
+      when "1"
+        puts "Here are the current categories:"
+        print_categories(db)
+        puts "Which one would you like to see?"
+        category_view = gets.chomp.downcase
+        print_ideas_by_category(db, category_view)
+      when "2"
+        puts "Please enter the maximum cost on a scale from 0 to 5:"
+        max_cost = gets.chomp.to_i
+        print_according_to_cost(db, max_cost)
+      when "3"
+        puts "Please enter the maximum number of minutes you want to spend:"
+        max_time = gets.chomp.to_i
+        print_according_to_time(db, max_time)
+      when "4"
+        print_ideas(db)
+      else
+        puts "Sorry! I don't have that capability now."
+      end
 
   elsif answer == "3"
 
