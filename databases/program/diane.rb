@@ -284,8 +284,9 @@ add_idea(db, 2, "eat ice cream", 35, 1, "false")
 puts "Welcome to Treat Your Self"
 puts "Would you like to: "
 puts "1) Record how you treated yourself"
-puts "2) Get an idea about how to treat yourself"
+puts "2) Get a list of ideas about how to treat yourself"
 puts "3) Add an idea about how to treat yourself"
+puts "Or type 'quit' to exit"
 
 answer = gets.chomp
 
@@ -359,7 +360,7 @@ until answer.downcase == 'quit'
     add_idea(db, idea_category, idea_description, time, cost)
 
   else
-    puts "You've got to pick 1, 2 or 3"
+    puts "You've got to pick 1, 2 or 3 (or 'quit' to exit)"
   end
   answer = gets.chomp
 end
