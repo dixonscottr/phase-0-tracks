@@ -331,6 +331,12 @@ until option_input.downcase == 'quit'
     time = gets.chomp
     log_event(db, date, category, description, time, cost)
 
+  elsif option_input == "2"
+    
+    puts "Here's a list of ways you've treated yourself:"
+    print_done_list(db)
+      
+
   elsif option_input == "3"
 
     puts "How would you like to see the idea list?"
