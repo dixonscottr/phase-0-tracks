@@ -88,9 +88,9 @@ end
 # accepts database, description, and table as input
 # outputs true or false
 
-def has_description(db, description, table)
+def has_description(db, description)
   descriptions = []
-  db.execute("SELECT description FROM #{table}").each do |idea|
+  db.execute("SELECT description FROM ideas").each do |idea|
     descriptions << idea['description'].downcase
   end
   descriptions.include?(description) ? true : false
@@ -111,7 +111,7 @@ end
 # method to add an idea to ideas database
 # accepts 5 arguments: category, description, time required (in minutes), done status, cost (0 to 5)
 def add_idea(db, category, description, time_required, cost, done = "false")
-  if !has_description(db, description, "ideas")
+  if !has_description(db, description)
     add_data_to_ideas = <<-SQL
       INSERT INTO ideas (category_id, description, time_required, cost, done_status)
         VALUES (?,?,?,?,?)
