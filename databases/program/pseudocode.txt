@@ -28,3 +28,79 @@
   # 
   # Print out the logged events table neatly
 
+
+
+#################
+## DRIVER CODE ##
+#################
+
+# WILL NOT RUN IN THIS FILE
+
+# add_category(db, "shopping")
+# add_category(db, "food/drink")
+# add_category(db, "media")
+# add_category(db, "social")
+# add_category(db, "relaxation")
+# add_category(db, "pamper")
+
+# add_idea(db, 1, "talk to a shoe", 5, 0, "false")
+# add_idea(db, 2, "buy a pelt", 10, 3, "false")
+# add_idea(db, 5, "buy something fancy", 50, 5, "true")
+# add_idea(db, 2, "buy a sweet coat", 40, 4, "true")
+# add_idea(db, 3, "sing a song badly", 13, 3, "true")
+# add_idea(db, 4, "walk in the park", 20, 2, "false")
+# add_idea(db, 2, "eat ice cream", 35, 1, "false")
+
+# log_event(db, '9/24/2016', 2, "talk to the queen", 15, 2)
+# log_event(db, '09/07/2016', 1, "buy a pelt", 10, 5)
+
+# print_ideas(db)
+# print_done_list(db)
+# p convert_category_to_id(db, "shopping")
+# p convert_category_to_id(db, "friends")
+# p convert_category_to_id(db, "media")
+
+# puts "has_category check"
+# p has_category(db, "shopping")
+# p has_category(db, "friends")
+# puts "..."
+
+# p has_description(db, "buy a pelt", "ideas")
+# p has_description(db, "buy a coat", "ideas")
+# p has_description(db, "buy a coat", "done")
+# p has_description(db, "talk to the queen", "done")
+
+# p make_dollar_signs(0)
+# p make_dollar_signs(5)
+
+# print_categories(db)
+
+# change_to_done(db, "talk to a shoe")
+
+# puts "not done list:"
+# print_done_or_not_done_list(db, "true")
+# puts "done list"
+# print_done_or_not_done_list(db, "false")
+
+# # JOINS: 
+# # SELECT done.date_done, categories.name, done.description, done.time_taken, done.cost
+# # FROM done
+# # JOIN categories ON done.category_id = categories.id;
+
+# p convert_id_to_category(db, 2)
+# p convert_id_to_category(db, 3)
+
+# puts "print out list under 5 cost"
+# print_according_to_cost(db, 5)
+# puts "under 3 cost"
+# print_according_to_cost(db, 3)
+
+# puts "under 30 minutes"
+# print_according_to_time(db, 30)
+# puts "under 10 minutes"
+# print_according_to_time(db, 10)
+
+# puts "all shopping"
+# print_ideas_by_category(db, "shopping")
+# puts "food/drink"
+# print_ideas_by_category(db, "food/drink")
