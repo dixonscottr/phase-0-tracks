@@ -175,7 +175,6 @@ def print_categories(db)
   db.execute("SELECT name FROM categories").each do |category|
     puts "* " + category['name'].capitalize
   end
-  puts "\n\n"
 end
 
 def print_ideas(db)
