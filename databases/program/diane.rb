@@ -315,15 +315,17 @@ add_idea(db, "social", "sing a song badly", 13, 3, "true")
 add_idea(db, "relaxation", "walk in the park", 20, 2, "false")
 add_idea(db, "food/drink", "eat ice cream", 35, 1, "false")
 
+system("clear")
+
 puts "Welcome to Treat Your Self (TYR Version 1.0)"
-puts "\"because you're worth it\"\n"
+puts "\"because you're worth it\"\n\n"
 
 puts "Treat Your Self options:"
 puts "1) Record how you treated yourself"
 puts "2) See how you've treated yourself"
 puts "3) Get a list of ideas about how to treat yourself"
 puts "4) Add an idea about how to treat yourself"
-puts "Type the number (or 'quit' to exit)"
+puts "Type the number (or 'quit' to exit): "
 
 option_input = gets.chomp
 
@@ -412,14 +414,19 @@ until option_input.downcase == 'quit'
   else
     puts "Invalid option! (Please wait for TYR Version 2.4)"
   end
-  puts "Treat Your Self options:"
-  puts "1) Record how you treated yourself"
-  puts "2) See how you've treated yourself"
-  puts "3) Get a list of ideas about how to treat yourself"
-  puts "4) Add an idea about how to treat yourself"
-  puts "Type the number (or 'quit' to exit)"
-
-  option_input = gets.chomp
+  puts "Would you like to do something else? (y/n)"
+  answer = gets.chomp.downcase
+  if answer == "yes" || answer == "y"
+    puts "Treat Your Self options:"
+    puts "1) Record how you treated yourself"
+    puts "2) See how you've treated yourself"
+    puts "3) Get a list of ideas about how to treat yourself"
+    puts "4) Add an idea about how to treat yourself"
+    puts "Type the number (or 'quit' to exit)"
+    option_input = gets.chomp
+  else
+    break
+  end
 
 end
 
