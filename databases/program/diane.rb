@@ -170,6 +170,7 @@ def num_of_categories(db)
 end
 
 def print_categories(db)
+  system("clear")
   puts "Here are the " + num_of_categories(db).to_s + " categories of ways to treat your self:"
   db.execute("SELECT name FROM categories").each do |category|
     puts "* " + category['name'].capitalize
@@ -243,11 +244,14 @@ def print_ideas_by_category(db, category)
   c_id = convert_category_to_id(db, category)
   ideas = db.execute("SELECT * FROM ideas WHERE category_id<= ?", [c_id])
   ideas.each do |ideas|
+    puts "Category: " + convert_id_to_category(db, ideas['category_id']).capitalize
     puts "Description: #{ideas['description']}"
     puts "Time required: #{ideas['time_required']} minutes"
     puts "Cost: " + make_dollar_signs(ideas['cost'])
     puts "---"
   end
+  # p category
+  # p c_id
 end
 
 # methods that help printing
@@ -354,6 +358,7 @@ until option_input.downcase == 'quit'
         puts "Which one would you like to see?"
         category_view = gets.chomp.downcase
         print_ideas_by_category(db, category_view)
+
       when "2"
         puts "Please enter the maximum cost on a scale from 1 to 5:"
         puts "(1 being practically free, 5 being you maxed out your AMEX)"
