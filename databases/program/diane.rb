@@ -116,7 +116,8 @@ def add_idea(db, category, description, time_required, cost, done = "false")
       INSERT INTO ideas (category_id, description, time_required, cost, done_status)
         VALUES (?,?,?,?,?)
     SQL
-    db.execute(add_data_to_ideas, [category, description, time_required, cost, done])
+    c_id = convert_category_to_id(db, category)
+    db.execute(add_data_to_ideas, [c_id, description, time_required, cost, done])
   end
 end
 
@@ -128,7 +129,13 @@ def log_event(db, date, category, description, time_taken, cost)
     INSERT INTO done (date_done, category_id, description, time_taken, cost)
       VALUES (?, ?, ?, ?, ?)
   SQL
-  db.execute(log_event_to_done, [date, category, description, time_taken, cost])
+  c_id = convert_category_to_id(db, category)
+  db.execute(log_event_to_done, [date, c_id, description, time_taken, cost])
+  if has_description(db, description, "ideas")
+    change_to_done(db, description)
+  else
+    add_idea(db, category, description, time_taken, cost, done="true")
+  end
 end
 
 # METHODS that update data in tables
@@ -273,13 +280,13 @@ add_category(db, "media")
 add_category(db, "social")
 add_category(db, "relaxation")
 add_category(db, "pamper")
-add_idea(db, 1, "talk to a shoe", 5, 0, "false")
-add_idea(db, 2, "buy a pelt", 10, 3, "false")
-add_idea(db, 5, "buy something fancy", 50, 5, "true")
-add_idea(db, 2, "buy a sweet coat", 40, 4, "true")
-add_idea(db, 3, "sing a song badly", 13, 3, "true")
-add_idea(db, 4, "walk in the park", 20, 2, "false")
-add_idea(db, 2, "eat ice cream", 35, 1, "false")
+add_idea(db, "social", "talk to a shoe", 5, 0, "false")
+add_idea(db, "shopping", "buy a pelt", 10, 3, "false")
+add_idea(db, "shopping", "buy something fancy", 50, 5, "true")
+add_idea(db, "shopping", "buy a sweet coat", 40, 4, "true")
+add_idea(db, "social", "sing a song badly", 13, 3, "true")
+add_idea(db, "relaxation", "walk in the park", 20, 2, "false")
+add_idea(db, "food/drink", "eat ice cream", 35, 1, "false")
 
 puts "Welcome to Treat Your Self"
 puts "Would you like to: "
@@ -328,7 +335,7 @@ until answer.downcase == 'quit'
       when "2"
         puts "Please enter the maximum cost on a scale from 1 to 5:"
         puts "(1 being practically free, 5 being you maxed out your AMEX)"
-        max_cost = gets.chomp.to_i
+        max_cost = Getts.chomp.to_i
         print_according_to_cost(db, max_cost)
       when "3"
         puts "Please enter the maximum number of minutes you want to spend:"
