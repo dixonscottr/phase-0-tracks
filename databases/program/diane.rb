@@ -258,6 +258,7 @@ end
 ## USER INTERFACE ##
 ####################
 
+# The following code allows the database to already have categories and a few examples set up
 add_category(db, "shopping")
 add_category(db, "food/drink")
 add_category(db, "media")
