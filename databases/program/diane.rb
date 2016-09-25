@@ -217,7 +217,7 @@ end
 # method to print out according to costs
 
 def print_according_to_cost(db, cost_max)
-  ideas = db.execute("SELECT * FROM ideas WHERE cost<='#{cost_max}'")
+  ideas = db.execute("SELECT * FROM ideas WHERE cost<=?", [cost_max])
   ideas.each do |ideas|
     puts "Category: " + convert_id_to_category(db, ideas['category_id']).capitalize
     puts "Description: #{ideas['description']}"
