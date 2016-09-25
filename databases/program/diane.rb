@@ -132,7 +132,7 @@ def log_event(db, date, category, description, time_taken, cost)
   #change the category name to the corresponding id
   c_id = convert_category_to_id(db, category)
   db.execute(log_event_to_done, [date, c_id, description, time_taken, cost])
-  if has_description(db, description, "ideas")
+  if has_description(db, description)
     #changes an idea's done status to true if it was logged
     change_to_done(db, description)
   else
