@@ -175,6 +175,7 @@ def print_categories(db)
   db.execute("SELECT name FROM categories").each do |category|
     puts "* " + category['name'].capitalize
   end
+  puts "\n\n"
 end
 
 def print_ideas(db)
@@ -187,6 +188,7 @@ def print_ideas(db)
     puts "Done? #{ideas['done_status']}"
     puts "---"
   end
+  puts "\n\n"
 end
 
 def print_done_list(db)
@@ -199,6 +201,7 @@ def print_done_list(db)
     puts "Cost: " + make_dollar_signs(did['cost'])
     puts "---"
   end
+  puts "\n\n"
 end
 
 # method to print out ideas not yet done
@@ -212,6 +215,7 @@ def print_done_or_not_done_list(db, done_or_not_done)
     puts "Cost: " + make_dollar_signs(ideas['cost'])
     puts "---"
   end
+  puts "\n\n"
 end
 
 # method to print out according to costs
@@ -225,6 +229,7 @@ def print_according_to_cost(db, cost_max)
     puts "Cost: " + make_dollar_signs(ideas['cost'])
     puts "---"
   end
+  puts "\n\n"
 end
 
 # method to print out according to time
@@ -238,6 +243,7 @@ def print_according_to_time(db, max_minutes)
     puts "Cost: " + make_dollar_signs(ideas['cost'])
     puts "---"
   end
+  puts "\n\n"
 end
 
 def print_ideas_by_category(db, category)
@@ -250,8 +256,7 @@ def print_ideas_by_category(db, category)
     puts "Cost: " + make_dollar_signs(ideas['cost'])
     puts "---"
   end
-  # p category
-  # p c_id
+  puts "\n\n"
 end
 
 # methods that help printing
