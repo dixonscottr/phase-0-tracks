@@ -340,7 +340,18 @@ until answer.downcase == 'quit'
 
   elsif answer == "3"
 
-
+    puts "I'll need 4 things from you: category, description, cost and time required"
+    puts "Here are the existing categories"
+    print_categories(db)
+    puts "Which category does your idea belong in?"
+    idea_category = gets.chomp
+    puts "Please enter a short description of your idea to treat yourself:"
+    idea_description = gets.chomp
+    puts "On a scale from 0 to 5, how much does this activity cost?"
+    cost = gets.chomp
+    puts "About how many minutes does this activity take?"
+    time = gets.chomp
+    add_idea(db, idea_category, idea_description, time, cost)
 
   else
     puts "You've got to pick 1, 2 or 3"
