@@ -262,6 +262,50 @@ end
 ## USER INTERFACE ##
 ####################
 
+add_category(db, "shopping")
+add_category(db, "food/drink")
+add_category(db, "media")
+add_category(db, "social")
+add_category(db, "relaxation")
+add_category(db, "pamper")
+
+puts "Welcome to Treat Your Self"
+puts "Would you like to: "
+puts "1) Record how you treated yourself"
+puts "2) Get an idea about how to treat yourself"
+puts "3) Add an idea about how to treat yourself"
+
+answer = gets.chomp
+
+until answer.downcase == 'quit'
+  if answer == "1"
+    puts "I'll need 5 things from you: the date, the category of the activity, a description, approximate cost, and amount of time"
+    puts "First up. What date would you like to record? (MM/DD/YYYY)"
+    date = gets.chomp
+    puts "Next, here are the current categories of activities we have:"
+    print_categories(db)
+    puts "Which category would you place this activity in?"
+    category = gets.chomp
+    puts "Please enter a short description of how you treated yourself:"
+    description = gets.chomp
+    puts "On a scale from 0 to 5, how much did this activity cost?"
+    cost = gets.chomp
+    puts "About how many minutes did this activity take?"
+    time = gets.chomp
+    log_event(db, date, category, description, time, cost)
+
+  elsif answer == "2"
+
+  elsif answer == "3"
+
+  else
+    puts "You've got to pick 1, 2 or 3"
+  end
+  answer = gets.chomp
+end
+
+puts "Your own well being thanks you for treating yourself!"
+
 
 #################
 ## DRIVER CODE ##
