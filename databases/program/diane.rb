@@ -102,7 +102,10 @@ end
 # accepts 1 argument: name
 
 def add_category(db, category_name)
-  db.execute("INSERT INTO categories (name) VALUES (?)", [category_name])
+  #only add a category if it doesn't exist
+  if !has_category(db, category_name)
+    db.execute("INSERT INTO categories (name) VALUES (?)", [category_name])
+  end
 end
 
 # method to add an idea to ideas database
