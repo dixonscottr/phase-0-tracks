@@ -230,7 +230,7 @@ end
 # method to print out according to time
 
 def print_according_to_time(db, max_minutes)
-  ideas = db.execute("SELECT * FROM ideas WHERE time_required<='#{max_minutes}'")
+  ideas = db.execute("SELECT * FROM ideas WHERE time_required<=?", [max_minutes])
   ideas.each do |ideas|
     puts "Category: " + convert_id_to_category(db, ideas['category_id']).capitalize
     puts "Description: #{ideas['description']}"
