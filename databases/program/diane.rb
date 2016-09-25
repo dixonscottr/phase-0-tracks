@@ -170,7 +170,7 @@ def num_of_categories(db)
 end
 
 def print_categories(db)
-  puts "Existing categories:"
+  puts "Here are the " + num_of_categories(db).to_s + " categories of ways to treat your self:"
   db.execute("SELECT name FROM categories").each do |category|
     puts "* " + category['name'].capitalize
   end
@@ -319,7 +319,6 @@ until option_input.downcase == 'quit'
     puts "I'll need 5 things from you: the date, the category of the activity, a description, approximate cost, and amount of time"
     puts "First up. What date would you like to record? (MM/DD/YYYY)"
     date = gets.chomp
-    puts "Next, here are the current categories of activities we have:"
     print_categories(db)
     puts "Which category would you place this activity in?"
     category = gets.chomp
@@ -345,7 +344,6 @@ until option_input.downcase == 'quit'
     case response
 
       when "1"
-        puts "Here are the current categories:"
         print_categories(db)
         puts "Which one would you like to see?"
         category_view = gets.chomp.downcase
@@ -374,7 +372,6 @@ until option_input.downcase == 'quit'
   elsif option_input == "4"
 
     puts "I'll need 4 things from you: category, description, cost and time required"
-    puts "Here are the existing categories"
     print_categories(db)
     puts "Which category does your idea belong in?"
     idea_category = gets.chomp
@@ -390,10 +387,11 @@ until option_input.downcase == 'quit'
   else
     puts "Invalid option! (Please wait for TYR Version 2.4)"
   end
-  puts "Would you like to do something else?"
+  puts "Treat Your Self options:"
   puts "1) Record how you treated yourself"
-  puts "2) Get a list of ideas about how to treat yourself"
-  puts "3) Add an idea about how to treat yourself"
+  puts "2) See how you've treated yourself"
+  puts "3) Get a list of ideas about how to treat yourself"
+  puts "4) Add an idea about how to treat yourself"
   puts "Type the number (or 'quit' to exit)"
 
   option_input = gets.chomp
