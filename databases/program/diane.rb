@@ -12,8 +12,7 @@ create_category_table = <<-SQL
 SQL
 db.execute(create_category_table)
 
-
-# #create idea table with 5 lists: category, description, time required (in minutes), done status, cost (0 to 5)
+#create idea table with 5 lists: category, description, time required (in minutes), done status, cost (0 to 5)
 create_ideas_table = <<-SQL
   CREATE TABLE IF NOT EXISTS ideas(
     id INTEGER PRIMARY KEY,
@@ -27,8 +26,7 @@ create_ideas_table = <<-SQL
 SQL
 db.execute(create_ideas_table)
 
-# #create done events with 5 lists: date, category, description, time taken, cost
-
+# create done events with 5 lists: date, category, description, time taken, cost
 create_done_table = <<-SQL
   CREATE TABLE IF NOT EXISTS done(
     id INTEGER PRIMARY KEY,
@@ -42,10 +40,9 @@ create_done_table = <<-SQL
 SQL
 db.execute(create_done_table)
 
-# METHODS that check existing data
+## METHODS that check existing data
 
 # method to check if a category already exists
-
 def has_category(db, category_name)
   simple_categories = []
   db.execute("SELECT name FROM categories").each do |category|
@@ -54,23 +51,19 @@ def has_category(db, category_name)
   simple_categories.include?(category_name) ? true : false
 end
 
-# method to see if an idea exists
-# accepts database, description, and table as input
-# outputs true or false
-
+# method to see if an idea exists (through its description, which should be unique)
 def has_description(db, description)
   descriptions = []
   db.execute("SELECT description FROM ideas").each do |idea|
+    #put all the descriptions into one array
     descriptions << idea['description'].downcase
   end
   descriptions.include?(description) ? true : false
 end
 
-# METHODS that add data to tables
+## METHODS that add data to tables
 
 # method to add a category to categories database
-# accepts 1 argument: name
-
 def add_category(db, category_name)
   #only add a category if it doesn't exist
   if !has_category(db, category_name)
@@ -78,22 +71,21 @@ def add_category(db, category_name)
   end
 end
 
-# method to add an idea to ideas database
-# accepts 5 arguments: category, description, time required (in minutes), done status, cost (0 to 5)
+# method to add an idea to ideas database with 5 lists: category, description, time required (in minutes), done status, cost (0 to 5)
 def add_idea(db, category, description, time_required, cost, done = "false")
+  #checks if there's already a description matching it in the ideas table
   if !has_description(db, description)
     add_data_to_ideas = <<-SQL
       INSERT INTO ideas (category_id, description, time_required, cost, done_status)
         VALUES (?,?,?,?,?)
     SQL
+    #convert the category to an id number
     c_id = convert_category_to_id(db, category)
     db.execute(add_data_to_ideas, [c_id, description, time_required, cost, done])
   end
 end
 
-# method to add a done event to the done database
-# accepts 6 arguments: database, date, category, description, time taken, cost
-
+# method to add a done event to the done database with 6 arguments: database, date, category, description, time taken, cost
 def log_event(db, date, category, description, time_taken, cost)
   log_event_to_done = <<-SQL
     INSERT INTO done (date_done, category_id, description, time_taken, cost)
@@ -113,10 +105,7 @@ end
 
 # METHODS that update data in tables
 
-# change done status
-# input: database, description
-# output: none, but changes done status in db
-
+# change done status from false to true
 def change_to_done(db, description_to_match)
   ideas = db.execute("SELECT description FROM ideas")
   update_idea = "UPDATE ideas SET done_status='true' WHERE description='#{description_to_match}'"
@@ -129,15 +118,6 @@ def change_to_done(db, description_to_match)
 end
 
 # METHODS that print
-
-#method to return the number of available categories
-def num_of_categories(db)
-  categories = []
-  db.execute("SELECT name FROM categories").each do |category|
-    categories << category['name']
-  end
-  categories.size
-end
 
 def print_categories(db)
   system("clear")
@@ -173,9 +153,9 @@ def print_done_list(db)
   puts "\n"
 end
 
-# method to print out ideas not yet done
-
+# method to print out a list of ideas not yet done, or done, depending on the last argument
 def print_done_or_not_done_list(db, done_or_not_done)
+  #done_or_not_done should be "true" or "false"
   ideas = db.execute("SELECT * FROM ideas WHERE done_status=?", [done_or_not_done])
   ideas.each do |ideas|
     puts "Category: " + convert_id_to_category(db, ideas['category_id']).capitalize
@@ -188,7 +168,6 @@ def print_done_or_not_done_list(db, done_or_not_done)
 end
 
 # method to print out according to costs
-
 def print_according_to_cost(db, cost_max)
   ideas = db.execute("SELECT * FROM ideas WHERE cost<=?", [cost_max])
   ideas.each do |ideas|
@@ -202,7 +181,6 @@ def print_according_to_cost(db, cost_max)
 end
 
 # method to print out according to time
-
 def print_according_to_time(db, max_minutes)
   ideas = db.execute("SELECT * FROM ideas WHERE time_required<=?", [max_minutes])
   ideas.each do |ideas|
@@ -231,10 +209,6 @@ end
 # methods that help printing
 
 # method that finds the id # corresponding to category
-# accepts a category as a name
-# finds the category in the categories table
-# outputs the id # of that category
-
 def convert_category_to_id (db, category_name)
   categories = db.execute("SELECT id, name FROM categories")
   id_num = false
@@ -246,6 +220,7 @@ def convert_category_to_id (db, category_name)
   id_num
 end
 
+#method that finds the actual category name from an id number
 def convert_id_to_category(db, id)
   categories = db.execute("SELECT * FROM categories")
   real_name = false
@@ -257,6 +232,7 @@ def convert_id_to_category(db, id)
   real_name
 end
 
+#method to print out the dollar signs to display cost
 def make_dollar_signs(num)
   "$" * num
 end
@@ -266,9 +242,16 @@ def num_of_times_treated(db)
   db.execute("SELECT description FROM done").each do |description|
     times_treated += 1
   end
-  
   times_treated
-  
+end
+
+#method to return the number of available categories
+def num_of_categories(db)
+  categories = []
+  db.execute("SELECT name FROM categories").each do |category|
+    categories << category['name']
+  end
+  categories.size
 end
 
 ####################
@@ -281,18 +264,18 @@ add_category(db, "media")
 add_category(db, "social")
 add_category(db, "relaxation")
 add_category(db, "pamper")
-add_idea(db, "social", "talk to a shoe", 5, 0, "false")
-add_idea(db, "shopping", "buy a pelt", 10, 3, "false")
-add_idea(db, "shopping", "buy something fancy", 50, 5, "true")
-add_idea(db, "shopping", "buy a sweet coat", 40, 4, "true")
-add_idea(db, "social", "sing a song badly", 13, 3, "true")
-add_idea(db, "relaxation", "walk in the park", 20, 2, "false")
-add_idea(db, "food/drink", "eat ice cream", 35, 1, "false")
+add_idea(db, "social", "talk to a friend", 5, 1, "false")
+add_idea(db, "shopping", "buy a fur", 10, 3, "false")
+add_idea(db, "shopping", "buy something real fancy", 50, 5, "true")
+add_idea(db, "media", "watch a cat video", 5, 1, "true")
+add_idea(db, "social", "sing a song badly really loud", 6, 1, "true")
+add_idea(db, "relaxation", "walk in the park", 20, 1, "false")
+add_idea(db, "food/drink", "eat ice cream", 15, 2, "false")
 
 system("clear")
 
 puts "Welcome to Treat Your Self (TYR Version 1.0)"
-puts "\"because you're worth it\"\n\n"
+puts "\"Because you're worth it\" - Future You\n\n"
 
 puts "Treat Your Self options:"
 puts "1) Record how you treated yourself"
@@ -388,8 +371,10 @@ until option_input.downcase == 'quit'
   else
     puts "Invalid option! (Please wait for TYR Version 2.4)"
   end
+  
   puts "Would you like to do something else? (y/n)"
   answer = gets.chomp.downcase
+
   if answer == "yes" || answer == "y"
     puts "Treat Your Self options:"
     puts "1) Record how you treated yourself"
@@ -404,7 +389,7 @@ until option_input.downcase == 'quit'
 
 end
 
-puts "Your own well being thanks you for treating yourself!"
+puts "Your own well-being thanks you for treating yourself!"
 
 
 #################
