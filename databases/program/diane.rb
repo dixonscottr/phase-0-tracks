@@ -292,17 +292,20 @@ add_idea(db, "social", "sing a song badly", 13, 3, "true")
 add_idea(db, "relaxation", "walk in the park", 20, 2, "false")
 add_idea(db, "food/drink", "eat ice cream", 35, 1, "false")
 
-puts "Welcome to Treat Your Self"
-puts "Would you like to: "
+puts "Welcome to Treat Your Self (TYR Version 1.0)"
+puts "\"because you're worth it\"\n"
+
+puts "Treat Your Self options:"
 puts "1) Record how you treated yourself"
 puts "2) Get a list of ideas about how to treat yourself"
 puts "3) Add an idea about how to treat yourself"
-puts "Or type 'quit' to exit"
+puts "Type the number (or 'quit' to exit)"
 
-answer = gets.chomp
+option_input = gets.chomp
 
-until answer.downcase == 'quit'
-  if answer == "1"
+until option_input.downcase == 'quit'
+
+  if option_input == "1"
     puts "I'll need 5 things from you: the date, the category of the activity, a description, approximate cost, and amount of time"
     puts "First up. What date would you like to record? (MM/DD/YYYY)"
     date = gets.chomp
@@ -318,7 +321,8 @@ until answer.downcase == 'quit'
     puts "About how many minutes did this activity take?"
     time = gets.chomp
     log_event(db, date, category, description, time, cost)
-  elsif answer == "2"
+
+  elsif option_input == "2"
 
     puts "How would you like to see the idea list?"
     puts "1) By category"
@@ -357,7 +361,7 @@ until answer.downcase == 'quit'
         puts "Sorry! I don't have that capability now."
       end
 
-  elsif answer == "3"
+  elsif option_input == "3"
 
     puts "I'll need 4 things from you: category, description, cost and time required"
     puts "Here are the existing categories"
@@ -374,9 +378,16 @@ until answer.downcase == 'quit'
     add_idea(db, idea_category, idea_description, time, cost)
 
   else
-    puts "You've got to pick 1, 2 or 3 (or 'quit' to exit)"
+    puts "Invalid option! (Please wait for TYR Version 2.4)"
   end
-  answer = gets.chomp
+  puts "Would you like to do something else?"
+  puts "1) Record how you treated yourself"
+  puts "2) Get a list of ideas about how to treat yourself"
+  puts "3) Add an idea about how to treat yourself"
+  puts "Type the number (or 'quit' to exit)"
+
+  option_input = gets.chomp
+
 end
 
 puts "Your own well being thanks you for treating yourself!"
