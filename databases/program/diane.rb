@@ -306,7 +306,8 @@ until answer.downcase == 'quit'
     puts "1) By category"
     puts "2) By cost"
     puts "3) By time required"
-    puts "4) All ideas"
+    puts "4) By whether you've done them or not"
+    puts "5) All ideas"
     response = gets.chomp
 
     case response
@@ -326,12 +327,20 @@ until answer.downcase == 'quit'
         max_time = gets.chomp.to_i
         print_according_to_time(db, max_time)
       when "4"
+        puts "Would you like to see activities you've done? Or not done?"
+        puts "Type 'done' or 'not done'"
+        done_or_not = gets.chomp.downcase
+        done_or_not == "done" ? done_or_not = "true" : done_or_not = "false"
+        print_done_or_not_done_list(db, done_or_not)
+      when "5"
         print_ideas(db)
       else
         puts "Sorry! I don't have that capability now."
       end
 
   elsif answer == "3"
+
+
 
   else
     puts "You've got to pick 1, 2 or 3"
