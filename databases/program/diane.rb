@@ -129,11 +129,14 @@ def log_event(db, date, category, description, time_taken, cost)
     INSERT INTO done (date_done, category_id, description, time_taken, cost)
       VALUES (?, ?, ?, ?, ?)
   SQL
+  #change the category name to the corresponding id
   c_id = convert_category_to_id(db, category)
   db.execute(log_event_to_done, [date, c_id, description, time_taken, cost])
   if has_description(db, description, "ideas")
+    #changes an idea's done status to true if it was logged
     change_to_done(db, description)
   else
+    #adds the logged event as an idea for the future
     add_idea(db, category, description, time_taken, cost, done="true")
   end
 end
@@ -147,6 +150,7 @@ end
 def change_to_done(db, description_to_match)
   ideas = db.execute("SELECT description FROM ideas")
   update_idea = "UPDATE ideas SET done_status='true' WHERE description='#{description_to_match}'"
+  # loop through the ideas and looks for matching descriptions
   ideas.each do |ideas|
     if ideas['description'] == description_to_match
       db.execute(update_idea)
