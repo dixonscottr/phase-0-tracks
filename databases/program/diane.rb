@@ -241,7 +241,7 @@ end
 
 def print_ideas_by_category(db, category)
   c_id = convert_category_to_id(db, category)
-  ideas = db.execute("SELECT * FROM ideas WHERE category_id<='#{c_id}'")
+  ideas = db.execute("SELECT * FROM ideas WHERE category_id<= ?", [c_id])
   ideas.each do |ideas|
     puts "Description: #{ideas['description']}"
     puts "Time required: #{ideas['time_required']} minutes"
@@ -261,7 +261,7 @@ def convert_category_to_id (db, category_name)
   categories = db.execute("SELECT id, name FROM categories")
   id_num = false
   categories.each do |category|
-    if category['name'] == category_name
+    if category['name'] == category_name.downcase
       id_num = category['id']
     end
   end
