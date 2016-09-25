@@ -160,6 +160,15 @@ end
 
 # METHODS that print
 
+#method to return the number of available categories
+def num_of_categories(db)
+  categories = []
+  db.execute("SELECT name FROM categories").each do |category|
+    categories << category['name']
+  end
+  categories.size
+end
+
 def print_categories(db)
   puts "Existing categories:"
   db.execute("SELECT name FROM categories").each do |category|
