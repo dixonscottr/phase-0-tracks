@@ -260,7 +260,7 @@ def convert_id_to_category(db, id)
 end
 
 def make_dollar_signs(num)
-  num > 0 ? ("$" * num) : "0"
+  "$" * num
 end
 
 ####################
@@ -301,7 +301,8 @@ until answer.downcase == 'quit'
     category = gets.chomp
     puts "Please enter a short description of how you treated yourself:"
     description = gets.chomp
-    puts "On a scale from 0 to 5, how much did this activity cost?"
+    puts "On a scale from 1 to 5, how much did this activity cost?"
+    puts "(1 being practically free, 5 being you maxed out your AMEX)"
     cost = gets.chomp
     puts "About how many minutes did this activity take?"
     time = gets.chomp
@@ -325,7 +326,8 @@ until answer.downcase == 'quit'
         category_view = gets.chomp.downcase
         print_ideas_by_category(db, category_view)
       when "2"
-        puts "Please enter the maximum cost on a scale from 0 to 5:"
+        puts "Please enter the maximum cost on a scale from 1 to 5:"
+        puts "(1 being practically free, 5 being you maxed out your AMEX)"
         max_cost = gets.chomp.to_i
         print_according_to_cost(db, max_cost)
       when "3"
@@ -353,8 +355,9 @@ until answer.downcase == 'quit'
     idea_category = gets.chomp
     puts "Please enter a short description of your idea to treat yourself:"
     idea_description = gets.chomp
-    puts "On a scale from 0 to 5, how much does this activity cost?"
-    cost = gets.chomp
+    puts "On a scale from 1 to 5, how much does this activity cost?"
+    puts "(1 being practically free, 5 being you maxed out your AMEX)"
+    cost = gets.chomp.to_i
     puts "About how many minutes does this activity take?"
     time = gets.chomp
     add_idea(db, idea_category, idea_description, time, cost)
