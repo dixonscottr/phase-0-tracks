@@ -351,7 +351,7 @@ until option_input.downcase == 'quit'
       when "2"
         puts "Please enter the maximum cost on a scale from 1 to 5:"
         puts "(1 being practically free, 5 being you maxed out your AMEX)"
-        max_cost = Getts.chomp.to_i
+        max_cost = gets.chomp.to_i
         print_according_to_cost(db, max_cost)
       when "3"
         puts "Please enter the maximum number of minutes you want to spend:"
