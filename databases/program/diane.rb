@@ -297,8 +297,9 @@ puts "\"because you're worth it\"\n"
 
 puts "Treat Your Self options:"
 puts "1) Record how you treated yourself"
-puts "2) Get a list of ideas about how to treat yourself"
-puts "3) Add an idea about how to treat yourself"
+puts "2) See how you've treated yourself"
+puts "3) Get a list of ideas about how to treat yourself"
+puts "4) Add an idea about how to treat yourself"
 puts "Type the number (or 'quit' to exit)"
 
 option_input = gets.chomp
@@ -322,7 +323,7 @@ until option_input.downcase == 'quit'
     time = gets.chomp
     log_event(db, date, category, description, time, cost)
 
-  elsif option_input == "2"
+  elsif option_input == "3"
 
     puts "How would you like to see the idea list?"
     puts "1) By category"
@@ -361,7 +362,7 @@ until option_input.downcase == 'quit'
         puts "Sorry! I don't have that capability now."
       end
 
-  elsif option_input == "3"
+  elsif option_input == "4"
 
     puts "I'll need 4 things from you: category, description, cost and time required"
     puts "Here are the existing categories"
