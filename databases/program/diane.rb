@@ -111,11 +111,13 @@ end
 # method to add an idea to ideas database
 # accepts 5 arguments: category, description, time required (in minutes), done status, cost (0 to 5)
 def add_idea(db, category, description, time_required, cost, done = "false")
-  add_data_to_ideas = <<-SQL
-    INSERT INTO ideas (category_id, description, time_required, cost, done_status)
-      VALUES (?,?,?,?,?)
-  SQL
-  db.execute(add_data_to_ideas, [category, description, time_required, cost, done])
+  if !has_description(db, description, "ideas")
+    add_data_to_ideas = <<-SQL
+      INSERT INTO ideas (category_id, description, time_required, cost, done_status)
+        VALUES (?,?,?,?,?)
+    SQL
+    db.execute(add_data_to_ideas, [category, description, time_required, cost, done])
+  end
 end
 
 # method to add a done event to the done database
