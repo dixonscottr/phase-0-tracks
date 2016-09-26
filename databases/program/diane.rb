@@ -178,14 +178,7 @@ end
 def print_ideas_by_category(db, category)
   c_id = convert_category_to_id(db, category)
   ideas = db.execute("SELECT * FROM ideas WHERE category_id = ?", [c_id])
-  ideas.each do |ideas|
-    puts "Category: " + convert_id_to_category(db, ideas['category_id']).capitalize
-    puts "Description: #{ideas['description']}"
-    puts "Time required: #{ideas['time_required']} minutes"
-    puts "Cost: " + make_dollar_signs(ideas['cost'])
-    puts "---"
-  end
-  puts "\n"
+  basic_print(db, ideas)
 end
 
 # methods that help printing
