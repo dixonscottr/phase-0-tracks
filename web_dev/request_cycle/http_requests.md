@@ -1,8 +1,7 @@
 #9.1 How the Web Works
+Release 0: HTTP Requests
 
-###Release 0: HTTP Requests
-
-1. *What are some common HTTP status codes?*
+####1) *What are some common HTTP status codes?*
 
 * **100s** - informational
     * **100 (Continue)** - Everything so far is going OK and the client should continue with the request
@@ -25,7 +24,7 @@
     * **500 (Internal Server Error)** - Something wrong with the server
     * **503 (Service Unavailable)** - The server is not ready for the request. Either its down for maintenance or overloaded
 
-2. *What is the difference between a GET request and a POST request? When might each be used?*
+####2) *What is the difference between a GET request and a POST request? When might each be used?*
 
 GET requests data from a specified resource. POST submits data to be processed to a resource. In other words, GET is for retrieving data, POST is for writing data.
 
@@ -39,7 +38,8 @@ GET requests data from a specified resource. POST submits data to be processed t
 * GETs are restricted to ASCII characters, POSTs are not and can allow binary
 * GET parameters are in URL, POST parameters are in the body
 
-3. *What is a cookie (the technical kind, not the delicious kind)? How does it relate to HTTP requests?*
+
+####3) *What is a cookie (the technical kind, not the delicious kind)? How does it relate to HTTP requests?*
 
 a cookie is small text file sent from a server and stored in a user's web browser while the user is browsing the page. It is then typically sent back together with the next request to the server. Typically used for 3 purposes: 1) session management (managing user logins or maintaining items in a shopping cart) 2) personalization and 3) tracking.
 
