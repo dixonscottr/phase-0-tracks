@@ -166,27 +166,13 @@ end
 # method to print out according to costs
 def print_according_to_cost(db, cost_max)
   ideas = db.execute("SELECT * FROM ideas WHERE cost<=?", [cost_max])
-  ideas.each do |ideas|
-    puts "Category: " + convert_id_to_category(db, ideas['category_id']).capitalize
-    puts "Description: #{ideas['description']}"
-    puts "Time required: #{ideas['time_required']} minutes"
-    puts "Cost: " + make_dollar_signs(ideas['cost'])
-    puts "---"
-  end
-  puts "\n"
+  basic_print(db, ideas)
 end
 
 # method to print out according to time
 def print_according_to_time(db, max_minutes)
   ideas = db.execute("SELECT * FROM ideas WHERE time_required<=?", [max_minutes])
-  ideas.each do |ideas|
-    puts "Category: " + convert_id_to_category(db, ideas['category_id']).capitalize
-    puts "Description: #{ideas['description']}"
-    puts "Time required: #{ideas['time_required']} minutes"
-    puts "Cost: " + make_dollar_signs(ideas['cost'])
-    puts "---"
-  end
-  puts "\n"
+  basic_print(db, ideas)
 end
 
 def print_ideas_by_category(db, category)
