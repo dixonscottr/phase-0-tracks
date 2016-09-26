@@ -1,0 +1,106 @@
+# pseudocode
+  #
+  # in d.i.a.n.e. database, create categories table with one list: name
+  #
+  # in d.i.a.n.e. database, create ideas table if note already created
+  # ideas table will have 5 lists: category, description, time required, done status, cost (as 0 to 5 $s)
+  #
+  # in d.i.a.n.e. database, create logged events table if not already created
+  # logged events table will have 5 lists: date, category, description, time taken, cost
+  #
+  # Accept as input: date, category, description, time and cost in list form
+  # Store as a new row in the logged events table
+  # IF that event's description isn't in the ideas table:
+  #  Store the category, description, time taken (as time required), cost and done status as true
+  # IF that event's description is in the ideas table:
+  #  UPDATE the done status to true
+  #
+  # Accept as input: category, description, time, cost
+  # Store as a new row in the ideas tables with done status as false
+  #
+  # Accept as input: category name
+  # Store as a new row in the categories table
+  # 
+  # Accept as (all optional) inputs: category, time, cost
+  # Print out the ideas table according set to the conditions
+  # IF no input:
+  #   Print out the full ideas table
+  # 
+  # Print out the logged events table neatly
+
+
+
+#################
+## DRIVER CODE ##
+#################
+
+# WILL NOT RUN IN THIS FILE
+
+# add_category(db, "shopping")
+# add_category(db, "food/drink")
+# add_category(db, "media")
+# add_category(db, "social")
+# add_category(db, "relaxation")
+# add_category(db, "pamper")
+
+# add_idea(db, 1, "talk to a shoe", 5, 0, "false")
+# add_idea(db, 2, "buy a pelt", 10, 3, "false")
+# add_idea(db, 5, "buy something fancy", 50, 5, "true")
+# add_idea(db, 2, "buy a sweet coat", 40, 4, "true")
+# add_idea(db, 3, "sing a song badly", 13, 3, "true")
+# add_idea(db, 4, "walk in the park", 20, 2, "false")
+# add_idea(db, 2, "eat ice cream", 35, 1, "false")
+
+# log_event(db, '9/24/2016', 2, "talk to the queen", 15, 2)
+# log_event(db, '09/07/2016', 1, "buy a pelt", 10, 5)
+
+# print_ideas(db)
+# print_done_list(db)
+# p convert_category_to_id(db, "shopping")
+# p convert_category_to_id(db, "friends")
+# p convert_category_to_id(db, "media")
+
+# puts "has_category check"
+# p has_category(db, "shopping")
+# p has_category(db, "friends")
+# puts "..."
+
+# p has_description(db, "buy a pelt", "ideas")
+# p has_description(db, "buy a coat", "ideas")
+# p has_description(db, "buy a coat", "done")
+# p has_description(db, "talk to the queen", "done")
+
+# p make_dollar_signs(0)
+# p make_dollar_signs(5)
+
+# print_categories(db)
+
+# change_to_done(db, "talk to a shoe")
+
+# puts "not done list:"
+# print_done_or_not_done_list(db, "true")
+# puts "done list"
+# print_done_or_not_done_list(db, "false")
+
+# # JOINS: 
+# # SELECT done.date_done, categories.name, done.description, done.time_taken, done.cost
+# # FROM done
+# # JOIN categories ON done.category_id = categories.id;
+
+# p convert_id_to_category(db, 2)
+# p convert_id_to_category(db, 3)
+
+# puts "print out list under 5 cost"
+# print_according_to_cost(db, 5)
+# puts "under 3 cost"
+# print_according_to_cost(db, 3)
+
+# puts "under 30 minutes"
+# print_according_to_time(db, 30)
+# puts "under 10 minutes"
+# print_according_to_time(db, 10)
+
+# puts "all shopping"
+# print_ideas_by_category(db, "shopping")
+# puts "food/drink"
+# print_ideas_by_category(db, "food/drink")
