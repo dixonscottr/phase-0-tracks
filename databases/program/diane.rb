@@ -160,14 +160,7 @@ end
 def print_done_or_not_done_list(db, done_or_not_done)
   #done_or_not_done should be "true" or "false"
   ideas = db.execute("SELECT * FROM ideas WHERE done_status=?", [done_or_not_done])
-  ideas.each do |ideas|
-    puts "Category: " + convert_id_to_category(db, ideas['category_id']).capitalize
-    puts "Description: #{ideas['description']}"
-    puts "Time required: #{ideas['time_required']} minutes"
-    puts "Cost: " + make_dollar_signs(ideas['cost'])
-    puts "---"
-  end
-  puts "\n"
+  basic_print(db, ideas)
 end
 
 # method to print out according to costs
