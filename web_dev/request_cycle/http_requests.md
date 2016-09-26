@@ -38,3 +38,9 @@ GET requests data from a specified resource. POST submits data to be processed t
 * GETs have length restrictions(since they are in the URL), POSTs do not
 * GETs are restricted to ASCII characters, POSTs are not and can allow binary
 * GET parameters are in URL, POST parameters are in the body
+
+3. *What is a cookie (the technical kind, not the delicious kind)? How does it relate to HTTP requests?*
+
+a cookie is small text file sent from a server and stored in a user's web browser while the user is browsing the page. It is then typically sent back together with the next request to the server. Typically used for 3 purposes: 1) session management (managing user logins or maintaining items in a shopping cart) 2) personalization and 3) tracking.
+
+Cookies are sent when returning an HTTP object to a client who has made a request to a server. Cookies are then typically returned to the server with any following HTTP requests.
