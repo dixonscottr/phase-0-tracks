@@ -119,6 +119,17 @@ end
 
 # METHODS that print
 
+def basic_print(db, hash)
+  hash.each do |item|
+    puts "Category: " + convert_id_to_category(db, item['category_id']).capitalize
+    puts "Description: #{item['description']}"
+    puts "Time required: #{item['time_required']} minutes"
+    puts "Cost: " + make_dollar_signs(item['cost'])
+    puts "Done? #{item['done_status']}"
+    puts "---\n"
+  end
+end
+
 def print_categories(db)
   system("clear")
   puts "Here are the " + num_of_categories(db).to_s + " categories of ways to treat your self:"
@@ -129,15 +140,7 @@ end
 
 def print_ideas(db)
   ideas = db.execute("SELECT * FROM ideas")
-  ideas.each do |ideas|
-    puts "Category: " + convert_id_to_category(db, ideas['category_id']).capitalize
-    puts "Description: #{ideas['description']}"
-    puts "Time required: #{ideas['time_required']} minutes"
-    puts "Cost: " + make_dollar_signs(ideas['cost'])
-    puts "Done? #{ideas['done_status']}"
-    puts "---"
-  end
-  puts "\n"
+  basic_print(db, ideas)
 end
 
 def print_done_list(db)
