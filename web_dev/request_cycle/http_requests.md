@@ -25,3 +25,16 @@
     * **500 (Internal Server Error)** - Something wrong with the server
     * **503 (Service Unavailable)** - The server is not ready for the request. Either its down for maintenance or overloaded
 
+2. *What is the difference between a GET request and a POST request? When might each be used?*
+
+GET requests data from a specified resource. POST submits data to be processed to a resource. In other words, GET is for retrieving data, POST is for writing data.
+
+**Differences**:
+
+* GETs can be cached, while POSTs are not
+* GETs shouldn't change the server, POSTs can change the server
+* GETs remain in browser history, POSTs do not
+* GETs can be bookmarked, POSTs cannot
+* GETs have length restrictions(since they are in the URL), POSTs do not
+* GETs are restricted to ASCII characters, POSTs are not and can allow binary
+* GET parameters are in URL, POST parameters are in the body
