@@ -181,6 +181,15 @@ def print_ideas_by_category(db, category)
   basic_print(db, ideas)
 end
 
+def print_menu
+  puts "Treat Your Self options:"
+  puts "1) Record how you treated yourself"
+  puts "2) See how you've treated yourself"
+  puts "3) Get a list of ideas about how to treat yourself"
+  puts "4) Add an idea about how to treat yourself"
+  puts "Type the number (or 'quit' to exit): "
+end
+
 # methods that help printing
 
 # method that finds the id # corresponding to category
@@ -252,13 +261,7 @@ system("clear")
 
 puts "Welcome to Treat Your Self (TYR Version 1.0)"
 puts "\"Because you're worth it\" - Future You\n\n"
-
-puts "Treat Your Self options:"
-puts "1) Record how you treated yourself"
-puts "2) See how you've treated yourself"
-puts "3) Get a list of ideas about how to treat yourself"
-puts "4) Add an idea about how to treat yourself"
-puts "Type the number (or 'quit' to exit): "
+print_menu
 
 option_input = gets.chomp
 
@@ -352,12 +355,7 @@ until option_input.downcase == 'quit'
   answer = gets.chomp.downcase
 
   if answer == "yes" || answer == "y"
-    puts "Treat Your Self options:"
-    puts "1) Record how you treated yourself"
-    puts "2) See how you've treated yourself"
-    puts "3) Get a list of ideas about how to treat yourself"
-    puts "4) Add an idea about how to treat yourself"
-    puts "Type the number (or 'quit' to exit)"
+    print_menu
     option_input = gets.chomp
   else
     break
