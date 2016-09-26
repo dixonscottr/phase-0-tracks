@@ -10,4 +10,8 @@ Release 1: Web Servers
 
 ####2) In your own words, what is a VPS (virtual private server)? What, according to your research, are the advantages of using a VPS?
 
+A VPS is basically a virtual computer that has its own operating system and memory. A VPS can then be used as a server. The advantages are that a VPS can be easily set up online for cheaper than a full dedicated physical server. It's easy to scale up or down depending on your needs. Since it's a virtual machine, you can just buy extra space or memory instead of physically installing it on a server.
+
 ####3) Why is it considered a bad idea to run programs as the root user on a Linux system?
+
+Since you are running the programs as the root users, you will have root-level access to everything, which could be dangerous if you make a mistake (that normally would only make the changes for a specific user or ask permission)or introduce a virus. 
