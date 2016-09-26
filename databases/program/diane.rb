@@ -295,12 +295,13 @@ until option_input.downcase == 'quit'
 
   elsif option_input == "3"
 
-    puts "How would you like to see the idea list?"
+    puts "How would you like to see the list of ideas?"
     puts "1) By category"
     puts "2) By cost"
     puts "3) By time required"
     puts "4) By whether you've done them or not"
     puts "5) All ideas"
+    puts "Type the number, please"
     response = gets.chomp
 
     case response
