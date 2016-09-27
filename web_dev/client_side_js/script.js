@@ -15,3 +15,11 @@ function surroundInRed(event) {
 
 var title = document.getElementById("hello");
 title.addEventListener("click", surroundInRed);
+
+function redText(event) {
+  console.log("Changing text to red");
+  event.target.style.color = "red"
+}
+
+var nextText = document.getElementById("red-text");
+nextText.addEventListener("mouseover", redText);
