@@ -8,3 +8,11 @@ function addPinkBorder(event) {
 
 var photo = document.getElementById("lizard-photo");
 photo.addEventListener("click", addPinkBorder);
+
+$(document).ready(function(){
+
+    $("img").click(function(){
+      $("img").hide();
+    });
+
+});
