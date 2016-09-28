@@ -12,7 +12,7 @@ body {
   padding: 10px
 }
 
-h1 {
+h1, h2 {
   font-size: 60px;
   letter-spacing: 3px;
   padding: 5px;
@@ -29,4 +29,8 @@ button {
   position: relative;
   display: none;
   color: #e60000;
+}
+
+h2 {
+  display: none;
 }
