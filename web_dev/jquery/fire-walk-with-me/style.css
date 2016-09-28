@@ -1,0 +1,36 @@
+body {
+  background-image: url("chevron.png");
+  background-repeat: repeat;
+  font-family: "Verdana", sans-serif;
+}
+
+#main {
+  background-color: #e60000;
+  text-align: center;
+  margin: auto;
+  width: 60%;
+  padding: 10px
+}
+
+h1, h2 {
+  font-size: 60px;
+  letter-spacing: 3px;
+  padding: 5px;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-top: -5px;
+}
+
+#poem {
+  font-size: 10px;
+  position: relative;
+  display: none;
+  color: #e60000;
+}
+
+h2 {
+  display: none;
+}
