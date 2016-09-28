@@ -11,4 +11,10 @@
 * practice some of the techniques in a basic html document (maybe a copy of the chameleon one?)
 * Try to explain to someone else what I learned (to solidify what I went over)
 
+######Resources I used
+
+* http://ejohn.org/apps/workshop/intro/
+* http://jqfundamentals.com/chapter/jquery-basics
+* 
+
 
