@@ -25,6 +25,8 @@ button {
 }
 
 #poem {
-  font-size: 25px;
+  font-size: 10px;
   position: relative;
+  display: none;
+  color: #e60000;
 }
