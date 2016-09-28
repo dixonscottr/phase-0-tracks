@@ -11,8 +11,20 @@ photo.addEventListener("click", addPinkBorder);
 
 $(document).ready(function(){
 
-    $("img").click(function(){
-      $("img").hide();
+    $("#fade-out").click(function(){
+      $("#lizard-photo").fadeOut(3000);
+    });
+
+    $("#fade-in").click(function(){
+      $("#lizard-photo").fadeIn(3000);
+    });
+
+    $("#lizard-photo").mouseenter(function(){
+      $("#lizard-photo").css("border", "10px solid pink");
+    });
+
+    $("#lizard-photo").mouseleave(function(){
+      $("#lizard-photo").css("border", "10px solid black");
     });
 
 });
