@@ -98,3 +98,30 @@ get '/:num_one/and/:num_two' do
   <p>#{num_one} divided #{num_two} equals #{dividend}<p>
   HTML
 end
+
+# write a GET route that allows that user to search students.db
+
+get '/students/age_limit/:age' do
+  students = db.execute("SELECT * FROM students")
+  
+  response = ""
+
+  students.each do |student|
+    if student['age'] >= (params[:age].to_i)
+      response << "ID: #{student['id']}<br>"
+      response << "Name: #{student['name']}<br>"
+      response << "Age: #{student['age']}<br>"
+      response << "Campus: #{student['campus']}<br><br>"
+    end
+  end
+
+  if response.empty?
+    response = "None found"
+  end
+
+  <<-HTML
+  <h1>Search Results:</h1>
+  #{response}
+  HTML
+
+end
