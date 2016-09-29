@@ -106,21 +106,25 @@ get '/students/age_limit/:age' do
   
   response = ""
 
+  result_number = 0
+
   students.each do |student|
-    if student['age'] >= (params[:age].to_i)
+    if student['age'] <= (params[:age].to_i)
       response << "ID: #{student['id']}<br>"
       response << "Name: #{student['name']}<br>"
       response << "Age: #{student['age']}<br>"
       response << "Campus: #{student['campus']}<br><br>"
+      result_number += 1
     end
   end
 
-  if response.empty?
-    response = "None found"
-  end
+  # if response.empty?
+  #   response = "None found"
+  # end
 
   <<-HTML
   <h1>Search Results:</h1>
+  <h2>#{result_number} results found</h2>
   #{response}
   HTML
 
