@@ -70,3 +70,31 @@ get '/good_job' do
     HTML
   end
 end
+
+# write a GET route that takes 2 route parameters (numbers) and adds them
+
+get '/:num_one/and/:num_two' do
+  num_one = params[:num_one].to_i
+  num_two = params[:num_two].to_i
+  
+  sum = num_one + num_two
+  product = num_one * num_two
+  difference = (num_one - num_two)
+  dividend = num_one.to_f / num_two.to_f
+
+  <<-HTML
+  <h1>Arithmatic</h1>
+
+  <h2>Addition:</h2>
+  <p>#{num_one} plus #{num_two} equals #{sum}<p>
+
+  <h2>Subtraction:</h2>
+  <p>#{num_one} minus #{num_two} equals #{sum}<p>
+
+  <h2>Muliplication:</h2>
+  <p>#{num_one} times #{num_two} equals #{product}<p>
+
+  <h2>Division:</h2>
+  <p>#{num_one} divided #{num_two} equals #{dividend}<p>
+  HTML
+end
