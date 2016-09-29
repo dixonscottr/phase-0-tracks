@@ -55,3 +55,18 @@ get '/contact' do
   <p><strong>BU</strong>tterfield 8-5050</p>
   HTML
 end
+
+# write a GET route that takes a person's name as a query parameter
+
+get '/good_job' do
+  name = params[:name]
+  if name
+    <<-HTML
+    <h2>Good job, #{name}</h2>
+    HTML
+  else
+    <<-HTML
+    <h2>Good job...you</h2>
+    HTML
+  end
+end
