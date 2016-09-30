@@ -25,3 +25,7 @@ post '/students' do
 end
 
 # add static resources
+
+get '/students/search_by_age' do
+  erb :search_by_age
+end
