@@ -29,3 +29,20 @@ end
 get '/students/search_by_age' do
   erb :search_by_age
 end
+
+post '/students/search_by_age' do
+  age = params['age'].to_i
+  student_age = db.execute("SELECT * FROM students WHERE age=?", [age])
+  student_list = ''
+  student_age.each do |student|
+    student_list << "Name: #{student['name']}<br />"
+    student_list << "Age: #{student['age']}<br />"
+    student_list << "Campus: #{student['campus']}<br />"
+  end
+
+  <<-HTML
+  <h2>Search results for #{age}-year-old students:</h2>
+  #{student_list}
+  HTML
+
+end
